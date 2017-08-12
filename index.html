@@ -1,0 +1,4024 @@
+<html lang="en">
+<head>
+  <title>-通盤檢討歷程-</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.css" rel="stylesheet" type="text/css" />
+
+  <style>
+	img {
+		max-width: 100%;
+		height: auto;
+		opacity: 0.5;
+		filter:blur(1px)
+	}
+
+	.container {
+	  position: relative;
+	}
+	
+	.center {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%)
+	}
+	
+    body {
+      font-family: Microsoft YaHei, sans-serif;
+    }
+	
+    #visualization {
+      box-sizing: border-box;
+      width: 50%;
+    }
+	
+    h1 {
+      color: #4D4D4D;
+	  text-align:center;
+	  letter-spacing: 10px;
+	  line-height: 50px;
+    }
+
+    h3 {
+      color: #4D4D4D;
+    }
+
+	footer {
+	  background-color: #2d2d30;
+	  color: #f5f5f5;
+	  padding: 40px 0px 35px;
+	}
+	
+	.vis-item.up {background-color: #ffd858;}
+	.vis-item.mid {background-color: #fff758;}
+	.vis-item.event {background-color: #e0e0e0;}
+
+  </style>
+  
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">北北基<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_tp">台北市</a></li>
+          <li><a href="#visualization_ntp">新北市</a></li>
+          <li><a href="#visualization_kl">基隆市</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">桃竹苗<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_ty">桃園市</a></li>
+          <li><a href="#visualization_hjc">新竹市</a></li>
+		  <li><a href="#visualization_hj">新竹縣</a></li>
+          <li><a href="#visualization_ml">苗栗縣</a></li>
+        </ul>
+      </li>
+	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">中彰投<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_tc">台中市</a></li>
+          <li><a href="#visualization_ch">彰化縣</a></li>
+          <li><a href="#visualization_nt">南投縣</a></li>
+        </ul>
+      </li>
+	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">雲嘉南<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_yl">雲林縣</a></li>
+          <li><a href="#visualization_cyc">嘉義市</a></li>
+		  <li><a href="#visualization_cy">嘉義縣</a></li>
+          <li><a href="#visualization_tn">台南市</a></li>
+        </ul>
+      </li>
+	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">高屏<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_ks">高雄市</a></li>
+          <li><a href="#visualization_pt">屏東縣</a></li>
+        </ul>
+      </li>
+	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">宜花東<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_el">宜蘭縣</a></li>
+          <li><a href="#visualization_hl">花蓮縣</a></li>
+          <li><a href="#visualization_td">台東縣</a></li>
+        </ul>
+      </li>
+	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">澎金馬<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#visualization_ph">澎湖縣</a></li>
+          <li><a href="#visualization_jm">金門縣</a></li>
+          <li><a href="#visualization_mj">連江縣(馬祖)</a></li>
+        </ul>
+      </li>
+	  <li><a href="#pk">國家公園</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+$(document).ready(function(){
+  $(".navbar a").on('click', function(event) {
+
+  if (this.hash !== "") {
+    event.preventDefault();
+
+    var hash = this.hash;
+
+    $('html, body').animate({
+      scrollTop: $(hash).offset().top
+    }, 1000, function(){
+       window.location.hash = hash;
+      });
+    }
+  });
+})
+</script>
+
+<div class="conatiner">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+     <div class="carousel-inner">
+      <div class="item active">
+        <img src="back/taipei.jpg">
+      </div>
+
+      <div class="item">
+        <img src="back/taichung.jpg">
+      </div>
+    
+      <div class="item">
+        <img src="back/tainan.jpg">
+      </div>
+	  
+	  <div class="item">
+        <img src="back/takao.jpg">
+      </div>
+    </div>
+  </div>
+  
+  <div class="center">
+	<h1>都市計畫、國家公園計畫</h1>
+	<h1>主要計畫通盤檢討歷程</h1>
+  </div>
+</div>
+
+<div class="container-fluid" id="visualization_tp" style="padding-top:50px">
+  <h3>台北市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '台北市都市計畫'},
+	{id: 2, value: 3, content: '士林區都市計畫'},
+	{id: 3, value: 4, content: '北投區都市計畫'},
+	{id: 4, value: 5, content: '南港區都市計畫'},
+	{id: 5, value: 6, content: '內湖區都市計畫'},
+	{id: 6, value: 7, content: '文山區都市計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+  	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	{start: new Date(1949,06,26), group:0, content:'草山管理局成立', className:'event'},
+	{start: new Date(1968,06,01), group:0, content:'併景美、木柵、南港、內湖、士林、北投', className:'event'},
+	{start: new Date(1990,02,12), group:0, content:'信義區自松山區南側劃出', className:'event'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(1900,07,23), group:1, content:'台北城內市區計畫', type: 'point'},
+	{start: new Date(1901,05,01), group:1, content:'台北城外南方市區計畫', type: 'point'},
+	{start: new Date(1905,09,07), group:1, content:'台北市區改正計畫', type: 'point'},
+	{start: new Date(1932,02,07), group:1, content:'台北市都市計畫', type: 'point'},
+	{start: new Date(1956,04,04), group:1, content:'台北市都市計畫', type: 'point'},
+	{start: new Date(2004,05,11), group:1, content:'萬華區都市計畫主要計畫(通檢)', type: 'point'},
+	{start: new Date(2016,00,10), group:1, content:'台北市都市計畫通檢(不含士林區、內湖區、南港區)(徵求意見)', type: 'point'},
+	
+	{start: new Date(1970,06,04), group:2, content:'陽明山管理局轄區主要計畫案', type: 'point'},
+	{start: new Date(2011,05,13), group:2, content:'士林區都市計畫(不含國家公園、社子島、外雙溪)(通檢)(公展)', type: 'point'},
+	{start: new Date(2013,04,14), group:2, content:'外雙溪地區都市計畫(通檢)', type: 'point'},
+	{start: new Date(1935,00,30), group:2, content:'草山市區計畫', type: 'point'},
+	{start: new Date(1953,01,02), group:2, content:'天母新村計畫', type: 'point'},
+	{start: new Date(1956,04,26), group:2, content:'士林都市計畫', type: 'point'},
+	{start: new Date(1967,08,16), group:2, content:'社子地區都市計畫', type: 'point'},
+		
+	{start: new Date(1970,06,04), group:3, content:'陽明山管理局轄區主要計劃', type: 'point'},
+	{start: new Date(2007,07,15), group:3, content:'北投區都市計畫(通檢)(不含國家公園、住宅區(保變住)、關渡農業區)', type: 'point'},
+	{start: new Date(1956,07,31), group:3, content:'北投都市計畫', type: 'point'},
+	{start: new Date(1962,07,06), group:3, content:'石牌營建計畫', type: 'point'},
+	
+	{start: new Date(1956,05,22), group:4, content:'南港地區計畫', type: 'point'},
+	{start: new Date(1969,07,22), group:4, content:'南港內湖兩地區主要計畫', type: 'point'},
+	{start: new Date(2010,08,28), group:4, content:'南港區都市計畫(通檢)', type: 'point'},
+	
+	{start: new Date(1967,11,23), group:5, content:'臺北縣內湖西南地區鄉街計畫', type: 'point'},
+	{start: new Date(1969,07,22), group:5, content:'南港內湖兩地區主要計畫', type: 'point'},
+	{start: new Date(1974,00,05), group:5, content:'內湖區主要計畫變更案', type: 'point'},
+	{start: new Date(2014,05,12), group:5, content:'內湖區都市計畫(通檢)(公展)', type: 'point'},
+	
+	{start: new Date(1969,03,28), group:6, content:'木柵景美兩地區主要計劃案', type: 'point'},
+	{start: new Date(1973,01,21), group:6, content:'福和大橋附近地區都市計畫', type: 'point'},
+	{start: new Date(2009,00,23), group:6, content:'文山區都市計畫', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_tp');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ntp" style="padding-top:50px">
+  <h3>新北市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '大漢溪南都市計畫', nestedGroups: [2,3,4,5,6,7,8,9]},
+	{id: 2, value: 3, content: '板橋都市計畫'},
+	{id: 3, value: 4, content: '中和都市計畫'},
+	{id: 4, value: 5, content: '新店都市計畫'},
+	{id: 5, value: 6, content: '土城都市計畫'},
+	{id: 6, value: 7, content: '永和都市計畫'},
+	{id: 7, value: 8, content: '土城(頂埔地區)都市計畫'},
+	{id: 8, value: 9, content: '新店(安坑地區)都市計畫'},
+	{id: 9, value:10, content: '板橋(浮洲地區)都市計畫'},
+	{id:10, value:11, content: '大漢溪北都市計畫', nestedGroups: [11,12,13,14,15,16,17,18,19]},
+	{id:11, value:12, content: '三重都市計畫'},
+	{id:12, value:13, content: '樹林都市計畫'},
+	{id:13, value:14, content: '蘆洲都市計畫'},
+	{id:14, value:15, content: '五股都市計畫'},
+	{id:15, value:16, content: '泰山都市計畫'},
+	{id:16, value:17, content: '新莊都市計畫'},
+	{id:17, value:18, content: '樹林(三多里地區)都市計畫'},
+	{id:18, value:19, content: '樹林(山佳地區)都市計畫'},
+	{id:19, value:20, content: '龍壽、迴龍地區都市計畫'},
+	{id:20, value:21, content: '瑞芳都市計畫'},
+	{id:21, value:22, content: '野柳風景特定區計畫'},
+	{id:22, value:23, content: '烏來水源特定區計畫'},
+	{id:23, value:24, content: '淡水都市計畫'},
+	{id:24, value:25, content: '澳底都市計畫'},
+	{id:25, value:26, content: '汐止都市計畫'},
+	{id:26, value:27, content: '林口特定區計畫'},
+	{id:27, value:28, content: '鶯歌都市計畫'},
+	{id:28, value:29, content: '三峽都市計畫'},
+	{id:29, value:30, content: '坪林水源特定區計畫'},
+	{id:30, value:31, content: '石門都市計畫'},
+	{id:31, value:32, content: '石碇都市計畫'},
+	{id:32, value:33, content: '深坑都市計畫'},
+	{id:33, value:34, content: '金山都市計畫'},
+	{id:34, value:35, content: '三芝都市計畫'},
+	{id:35, value:36, content: '雙溪都市計畫'},
+	{id:36, value:37, content: '台北港特定區計畫'},
+	{id:37, value:38, content: '平溪都市計畫'},
+	{id:38, value:39, content: '萬里都市計畫'},
+	{id:39, value:40, content: '台北水源特定區計畫'},
+	{id:40, value:41, content: '淡水(竹圍地區)都市計畫'},
+	{id:41, value:42, content: '東北角海岸風景特定區計畫'},
+	{id:42, value:43, content: '八里(龍形地區)都市計畫'},
+	{id:43, value:44, content: '十分風景特定區計畫'},
+	{id:44, value:45, content: '鶯歌(鳳鳴地區)都市計畫'},
+	{id:45, value:46, content: '北海岸風景特定區計畫'},
+	{id:46, value:47, content: '淡海新市鎮特定區計畫'},
+	{id:47, value:48, content: '台北大學社區特定區計畫'},
+	{id:48, value:49, content: '新店水源特定區計畫'},
+  ])
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2010,11,25), group:0, content:'新北市升格', className:'event'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(2015,06,15), group:1, content:'一階', type: 'point'},
+
+	{start: new Date(1938,10,26), group:2, content:'板橋都市計畫', type: 'point'},
+	{start: new Date(1969,07,04), group:2, content:'江子翠及十二埒地區鄉街計劃', type: 'point'},
+	{start: new Date(1971,00,25), group:2, content:'板橋擴大都市計畫(埔墘及四汴頭地區)', type: 'point'},
+	{start: new Date(1973,11,03), group:2, content:'板橋市都市計畫', type: 'point'},
+	{start: new Date(1993,07,10), group:2, content:'一通', type: 'point'},
+	{start: new Date(2015,01,09), group:2, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1955,01,21), group:3, content:'中和鄉都市計畫', type: 'point'},
+	{start: new Date(1973,09,05), group:3, content:'中和都市計畫', type: 'point'},
+	{start: new Date(1993,02,12), group:3, content:'一通', type: 'point'},
+	{start: new Date(2014,09,30), group:3, content:'二通', type: 'point'},
+		
+	{start: new Date(1956,07,31), group:4, content:'新店都市計畫', type: 'point'},
+	{start: new Date(1974,10,28), group:4, content:'新店都市計畫', type: 'point'},
+	{start: new Date(1976,05,12), group:4, content:'新店鎮都市計畫', type: 'point'},
+	{start: new Date(1987,04,01), group:4, content:'一通', type: 'point'},
+	{start: new Date(1999,11,17), group:4, content:'二通', type: 'point'},
+	{start: new Date(2016,07,31), group:4, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1972,03,26), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1981,01,23), group:5, content:'一通', type: 'point'},
+	{start: new Date(1993,06,07), group:5, content:'二通', type: 'point'},
+	{start: new Date(2016,08,01), group:5, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,04,09), group:6, content:'擬定', type: 'point'},
+	{start: new Date(2009,02,16), group:6, content:'一通', type: 'point'},
+	{start: new Date(2010,11,29), group:6, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1979,11,28), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1986,07,16), group:7, content:'一通', type: 'point'},
+	{start: new Date(1999,09,18), group:7, content:'二通', type: 'point'},
+	{start: new Date(2012,09,17), group:7, content:'三通(一階)', type: 'point'},
+	{start: new Date(2013,02,05), group:7, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1997,08,09), group:8, content:'擬定', type: 'point'},
+	
+	{start: new Date(2002,01,04), group:9, content:'擬定', type: 'point'},
+
+	{start: new Date(2015,06,15), group:10, content:'一階', type: 'point'},
+		
+	{start: new Date(1955,09,31), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1975,11,31), group:11, content:'擴大', type: 'point'},
+	{start: new Date(1991,10,11), group:11, content:'一通', type: 'point'},
+	{start: new Date(2014,08,28), group:11, content:'二通(一階)', type: 'point'},
+	
+	{start: new Date(1968,03,25), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1981,11,15), group:12, content:'通檢(第一期)', type: 'point'},
+	{start: new Date(1990,08,26), group:12, content:'一通', type: 'point'},
+	{start: new Date(2004,01,04), group:12, content:'二通', type: 'point'},
+	
+	{start: new Date(1971,09,05), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1984,01,11), group:13, content:'一通', type: 'point'},
+	{start: new Date(2004,01,05), group:13, content:'二通', type: 'point'},
+	{start: new Date(2011,00,27), group:13, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1971,09,05), group:14, content:'擬定', type: 'point'},
+	{start: new Date(2004,05,04), group:14, content:'一通', type: 'point'},
+	{start: new Date(2014,09,24), group:14, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1972,10,28), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1984,09,24), group:15, content:'一通', type: 'point'},
+	{start: new Date(2016,06,16), group:15, content:'二通', type: 'point'},
+		
+	{start: new Date(1973,00,20), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1989,11,21), group:16, content:'一通', type: 'point'},
+	{start: new Date(1989,11,21), group:16, content:'二通(一階)', type: 'point'},
+	{start: new Date(2014,00,23), group:16, content:'二通(二階)', type: 'point'},
+	
+	{start: new Date(1979,03,19), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1987,02,27), group:17, content:'一通', type: 'point'},
+	{start: new Date(1998,02,20), group:17, content:'二通', type: 'point'},
+	{start: new Date(2016,05,20), group:17, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1982,06,24), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1987,04,25), group:18, content:'一通', type: 'point'},
+	{start: new Date(2001,01,13), group:18, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,08,27), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1990,08,06), group:19, content:'一通', type: 'point'},
+	{start: new Date(2002,01,07), group:19, content:'二通', type: 'point'},
+	
+	{start: new Date(1937,02,25), group:20, content:'瑞芳市區計畫', type: 'point'},
+	{start: new Date(1967,08,15), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1984,09,05), group:20, content:'一通', type: 'point'},
+	{start: new Date(2000,07,07), group:20, content:'二通', type: 'point'},
+	
+	{start: new Date(1966,11,23), group:21, content:'野柳都市計畫', type: 'point'},
+	{start: new Date(1996,05,01), group:21, content:'野柳風景特定區計畫', type: 'point'},
+		
+	{start: new Date(1967,06,20), group:22, content:'烏來都市計畫', type: 'point'},
+	{start: new Date(1992,00,23), group:22, content:'一通', type: 'point'},
+	{start: new Date(2000,08,04), group:22, content:'烏來水源特定區計畫', type: 'point'},
+	{start: new Date(2003,08,29), group:22, content:'二通', type: 'point'},
+	
+	{start: new Date(1968,00,05), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1979,08,08), group:23, content:'一通', type: 'point'},
+	{start: new Date(1990,09,07), group:23, content:'二通', type: 'point'},
+	{start: new Date(2011,00,14), group:24, content:'三通', type: 'point'},
+	
+	{start: new Date(1968,00,25), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1985,04,21), group:24, content:'一通', type: 'point'},
+	{start: new Date(2003,04,15), group:24, content:'二通', type: 'point'},
+	
+	{start: new Date(1969,11,24), group:25, content:'汐止都市計畫', type: 'point'},
+	{start: new Date(1974,08,12), group:25, content:'汐止擴大都市計畫', type: 'point'},
+	{start: new Date(1975,11,10), group:25, content:'汐止橫科都市計畫', type: 'point'},
+	{start: new Date(1981,02,26), group:25, content:'汐止都市計畫一通', type: 'point'},
+	{start: new Date(2004,00,20), group:25, content:'合併二通', type: 'point'},
+	{start: new Date(2014,11,31), group:25, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1970,10,30), group:26, content:'林口特定區計畫(行政院)', type: 'point'},
+	{start: new Date(1975,01,20), group:26, content:'林口特定區計畫(省政府)', type: 'point'},
+	{start: new Date(1986,09,30), group:26, content:'一通', type: 'point'},
+	{start: new Date(1996,05,10), group:26, content:'二通', type: 'point'},
+	{start: new Date(2012,05,11), group:26, content:'三通', type: 'point'},
+	{start: new Date(2016,09,11), group:26, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1970,11,31), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1982,08,10), group:27, content:'一通', type: 'point'},
+	{start: new Date(1997,10,17), group:27, content:'二通', type: 'point'},
+
+	{start: new Date(1971,08,15), group:28, content:'擬定', type: 'point'},
+	{start: new Date(1985,02,18), group:28, content:'一通', type: 'point'},
+	{start: new Date(1995,00,26), group:28, content:'二通', type: 'point'},
+	{start: new Date(2015,10,23), group:28, content:'三通', type: 'point'},
+	
+	{start: new Date(1973,02,15), group:29, content:'坪林都市計畫', type: 'point'},
+	{start: new Date(1988,04,11), group:29, content:'一通', type: 'point'},
+	{start: new Date(2003,03,04), group:29, content:'坪林水源特定區計畫(二通)', type: 'point'},
+	
+	{start: new Date(1973,03,21), group:30, content:'擬定', type: 'point'},
+	{start: new Date(1985,00,25), group:30, content:'一通', type: 'point'},
+	{start: new Date(1997,09,01), group:30, content:'二通', type: 'point'},
+	{start: new Date(2009,11,10), group:30, content:'三通(公展)', type: 'point'},
+
+	{start: new Date(1973,07,16), group:31, content:'擬定', type: 'point'},
+	{start: new Date(1985,00,26), group:31, content:'一通', type: 'point'},
+	{start: new Date(1996,05,20), group:31, content:'二通', type: 'point'},
+
+	{start: new Date(1973,07,28), group:32, content:'擬定', type: 'point'},
+	{start: new Date(1994,05,05), group:32, content:'一通', type: 'point'},
+	{start: new Date(2008,02,37), group:32, content:'二通(一階)', type: 'point'},
+	
+	{start: new Date(1973,09,05), group:33, content:'擬定', type: 'point'},
+	{start: new Date(1983,07,05), group:33, content:'一通', type: 'point'},
+	{start: new Date(1995,09,12), group:33, content:'二通', type: 'point'},
+	{start: new Date(2015,01,13), group:33, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1973,11,29), group:34, content:'擬定', type: 'point'},
+	{start: new Date(1983,11,30), group:34, content:'一通', type: 'point'},
+	{start: new Date(1993,08,20), group:34, content:'二通', type: 'point'},
+	{start: new Date(2016,04,30), group:34, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1974,04,04), group:35, content:'擬定', type: 'point'},
+	{start: new Date(1992,03,24), group:35, content:'一通', type: 'point'},
+	
+	{start: new Date(1974,07,08), group:36, content:'八里都市計畫', type: 'point'},
+	{start: new Date(1984,03,10), group:36, content:'一通', type: 'point'},
+	{start: new Date(2001,10,16), group:36, content:'二通', type: 'point'},
+	{start: new Date(2009,11,31), group:36, content:'台北港特定區計畫(一階)', type: 'point'},
+	{start: new Date(2012,00,18), group:36, content:'台北港特定區計畫(二階)', type: 'point'},
+	
+	{start: new Date(1974,07,28), group:37, content:'擬定', type: 'point'},
+	{start: new Date(1990,11,20), group:37, content:'一通', type: 'point'},
+	
+	{start: new Date(1975,00,23), group:38, content:'擬定', type: 'point'},
+	{start: new Date(1982,08,01), group:38, content:'一通', type: 'point'},
+	{start: new Date(1989,06,15), group:38, content:'二通', type: 'point'},
+	{start: new Date(2016,03,15), group:38, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1981,07,21), group:39, content:'台北區水源集水區特定區計畫', type: 'point'},
+	{start: new Date(1984,01,27), group:39, content:'台北水源特定區計畫(北勢溪部份)', type: 'point'},
+	{start: new Date(1984,04,07), group:39, content:'台北水源特定區計畫(南勢溪部份)', type: 'point'},
+	{start: new Date(1993,07,10), group:39, content:'台北水源特定區計畫(含南、北勢溪部分)(一通)', type: 'point'},
+	{start: new Date(2001,04,21), group:39, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,01,02), group:40, content:'擬定(一階)', type: 'point'},
+	{start: new Date(1990,01,07), group:40, content:'一通', type: 'point'},
+	{start: new Date(2002,04,30), group:40, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,02,13), group:41, content:'東北角海岸風景特定區計畫', type: 'point'},
+	{start: new Date(1991,07,02), group:41, content:'東北角海岸(含大溪海岸及頭城濱海)風景特定區計畫(一通)', type: 'point'},
+	{start: new Date(2000,09,17), group:41, content:'二通', type: 'point'},
+	{start: new Date(1998,08,20), group:41, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1982,05,16), group:42, content:'擬定', type: 'point'},
+	{start: new Date(1991,05,06), group:42, content:'一通', type: 'point'},
+	{start: new Date(2015,11,08), group:42, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1983,02,21), group:43, content:'擬定', type: 'point'},
+	{start: new Date(1992,01,24), group:43, content:'一通', type: 'point'},
+	{start: new Date(2014,05,04), group:43, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1985,02,05), group:44, content:'擬定', type: 'point'},
+	{start: new Date(1993,10,11), group:44, content:'一通', type: 'point'},
+	{start: new Date(2016,00,12), group:44, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1986,11,12), group:45, content:'擬定', type: 'point'},
+	{start: new Date(2000,07,11), group:45, content:'一通', type: 'point'},
+	{start: new Date(2014,10,25), group:45, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1991,00,07), group:46, content:'擬定', type: 'point'},
+	{start: new Date(2000,01,01), group:46, content:'一通', type: 'point'},
+	{start: new Date(2013,10,18), group:46, content:'二通', type: 'point'},
+	
+	{start: new Date(1991,02,08), group:47, content:'擬定', type: 'point'},
+	{start: new Date(1998,06,30), group:47, content:'一通', type: 'point'},
+
+	{start: new Date(2001,05,25), group:48, content:'變更新店都市計畫(直潭、屈尺地區)為新店水源特定區計畫', type: 'point'},
+	]);
+
+  var container = document.getElementById('visualization_ntp');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_kl" style="padding-top:50px">
+  <h3>基隆市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '基隆市都市計畫', nestedGroups: [2,3,4,5,6]},
+	{id: 2, value: 3, content: '港口商埠地區都市計畫'},
+	{id: 3, value: 4, content: '七堵暖暖地區都市計畫'},
+	{id: 4, value: 5, content: '中山安樂及八斗子地區都市計畫'},
+	{id: 5, value: 6, content: '安樂社區都市計畫'},
+	{id: 6, value: 7, content: '八斗子漁港特定區計畫'}
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(2010,11,01), group:1, content:'合併擴大通檢(一階)', type: 'point'},
+	{start: new Date(2013,05,05), group:1, content:'合併擴大通檢(二階)', type: 'point'},
+	
+	{start: new Date(1907,07,05), group:2, content:'基隆市區改正', type: 'point'},
+	{start: new Date(1921,00,01), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1937,00,01), group:2, content:'基隆都市計畫', type: 'point'},
+	{start: new Date(1955,00,01), group:2, content:'沿用前計畫', type: 'point'},
+	{start: new Date(1981,02,30), group:2, content:'港口商埠地區都市計畫(一通)', type: 'point'},
+	{start: new Date(1997,00,31), group:2, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,02,08), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1981,02,30), group:3, content:'一通', type: 'point'},
+	{start: new Date(1986,04,27), group:3, content:'二通(暖暖)', type: 'point'},
+	{start: new Date(1986,05,03), group:3, content:'二通(七堵)', type: 'point'},
+	{start: new Date(1997,09,09), group:3, content:'三通', type: 'point'},
+
+	{start: new Date(1976,10,08), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1983,09,07), group:4, content:'一通', type: 'point'},
+	{start: new Date(1993,05,28), group:4, content:'二通', type: 'point'},
+		
+	{start: new Date(1972,05,05), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1992,07,14), group:5, content:'一通', type: 'point'},
+	
+	{start: new Date(1980,10,30), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1985,08,27), group:6, content:'擴大、一通', type: 'point'},
+	{start: new Date(1992,02,23), group:6, content:'一通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_kl');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ty" style="padding-top:50px">
+  <h3>桃園市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '桃園都會區都市計畫', nestedGroups: [2,3,4,5,6,7,8,9]},
+	{id: 2, value: 3, content: '桃園市都市計畫'},
+	{id: 3, value: 4, content: '龜山都市計畫'},
+	{id: 4, value: 5, content: '南崁地區都市計畫'},
+	{id: 5, value: 6, content: '八德(八德地區)都市計畫'},
+	{id: 6, value: 7, content: '八德(大湳地區)都市計畫'},
+	{id: 7, value: 8, content: '縱貫公路桃園內壢間都市計畫'},
+	{id: 8, value: 9, content: '蘆竹(大竹地區)都市計畫'},
+	{id: 9, value:10, content: '大溪(埔頂地區)都市計畫'},
+
+	{id:10, value:11, content: '中壢都會區都市計畫', nestedGroups: [11,12,13,14,15,16,17]},
+	{id:11, value:12, content: '中壢平鎮都市擴大修訂計畫'},
+	{id:12, value:13, content: '楊梅都市計畫'},
+	{id:13, value:14, content: '高速公路中壢及內壢交流道附近特定區計畫'},
+	{id:14, value:15, content: '高速公路楊梅交流道附近特定區計畫'},
+	{id:15, value:16, content: '中壢(龍岡地區)都市計畫'},
+	{id:16, value:17, content: '平鎮(山子頂地區)都市計畫'},
+	{id:17, value:18, content: '中壢(過嶺地區)楊梅(高榮地區)新屋(頭州地區)觀音(富源地區)都市計畫'},
+
+	{id:18, value:19, content: '生態遊憩地區都市計畫群', nestedGroups: [19,20,21,22,23,24,25]},
+	{id:19, value:20, content: '大溪都市計畫'},
+	{id:20, value:21, content: '石門都市計畫'},
+	{id:21, value:22, content: '石門水庫水源特定區計畫'},
+	{id:22, value:23, content: '復興都市計畫'},
+	{id:23, value:24, content: '龍潭都市計畫'},
+	{id:24, value:25, content: '小烏來風景特定區計畫'},
+	{id:25, value:26, content: '巴陵達觀山風景特定區計畫'},
+
+	{id:26, value:27, content: '龜山台地都市計畫', nestedGroups: [27,28]},
+	{id:27, value:28, content: '林口特定區計畫'},
+	{id:28, value:29, content: '龍壽、迴龍地區都市計畫'},
+
+	{id:29, value:30, content: '鄉村發展地區都市計畫群', nestedGroups: [30,31,32,33,34]},
+	{id:30, value:31, content: '觀音都市計畫'},
+	{id:31, value:32, content: '新屋都市計畫'},
+	{id:32, value:33, content: '觀音(新坡地區)都市計畫'},
+	{id:33, value:34, content: '觀音(草漯地區)都市計畫'},
+	{id:34, value:35, content: '楊梅(富岡、豐野地區)都市計畫'},
+
+	{id:35, value:36, content: '桃園航空城都市計畫', nestedGroups: [36,37,38,39,40]},
+	{id:36, value:37, content: '大園都市計畫'},
+	{id:37, value:38, content: '大園(菓林)都市計畫'},
+	{id:38, value:39, content: '桃園航空貨運園區暨客運園區(大園南港地區)特定計畫'},
+	{id:39, value:40, content: '高速鐵路桃園車站特定區計畫'},
+	{id:40, value:41, content: '桃園航空城區域計畫'},
+  ])
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2014,11,25), group:0, content:'桃園市升格', className:'event'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(2015,06,15), group:1, content:'一階', type: 'point'},
+
+	{start: new Date(1941,11,16), group:2, content:'桃園都市計畫', type: 'point'},
+	{start: new Date(1955,04,30), group:2, content:'桃園鎮都市計畫', type: 'point'},
+	{start: new Date(1971,00,25), group:2, content:'桃園都市擴大修訂計畫', type: 'point'},
+	{start: new Date(1979,05,29), group:2, content:'桃園(大樹林地區)都市計畫', type: 'point'},
+	{start: new Date(1984,00,01), group:2, content:'桃園都市計畫(通檢)', type: 'point'},
+	{start: new Date(1992,10,28), group:2, content:'桃園擴大修訂都市計畫)', type: 'point'},
+	{start: new Date(2004,08,08), group:2, content:'桃園都市計畫(二通)', type: 'point'},
+	
+	{start: new Date(1973,02,06), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1979,11,03), group:3, content:'通檢', type: 'point'},
+	{start: new Date(1985,10,19), group:3, content:'二通', type: 'point'},
+		
+	{start: new Date(1975,09,03), group:4, content:'南崁新市鎮都市計畫', type: 'point'},
+	{start: new Date(1984,01,10), group:4, content:'一通', type: 'point'},
+	{start: new Date(2013,10,22), group:4, content:'南崁地區都市計畫(二通)', type: 'point'},
+
+	{start: new Date(1976,04,31), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1986,03,12), group:5, content:'一通', type: 'point'},
+	{start: new Date(1995,03,20), group:5, content:'二通', type: 'point'},
+	{start: new Date(2005,03,29), group:5, content:'三通', type: 'point'},
+	{start: new Date(2009,04,18), group:5, content:'擴大(三通)', type: 'point'},
+
+	{start: new Date(1976,04,31), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1986,03,12), group:6, content:'一通', type: 'point'},
+	{start: new Date(1995,08,27), group:6, content:'二通', type: 'point'},
+	
+	{start: new Date(1979,02,17), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1982,07,03), group:7, content:'通檢', type: 'point'},
+	{start: new Date(1994,08,05), group:7, content:'二通', type: 'point'},
+	{start: new Date(2006,00,09), group:7, content:'三通', type: 'point'},
+	
+	{start: new Date(1984,10,27), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1991,05,06), group:8, content:'一通', type: 'point'},
+	{start: new Date(2001,09,17), group:8, content:'二通', type: 'point'},
+	{start: new Date(2012,08,25), group:8, content:'三通', type: 'point'},
+
+	{start: new Date(1986,04,28), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1993,11,16), group:9, content:'一通', type: 'point'},
+	{start: new Date(2014,02,31), group:9, content:'二通', type: 'point'},
+
+
+
+	{start: new Date(2015,06,15), group:10, content:'一階', type: 'point'},
+		
+	{start: new Date(1938,10,26), group:11, content:'中壢都市計畫', type: 'point'},
+	{start: new Date(1956,10,29), group:11, content:'中壢街都市計畫', type: 'point'},
+	{start: new Date(1983,03,26), group:11, content:'中壢平鎮都市擴大修訂計畫(通檢)', type: 'point'},
+	{start: new Date(1993,06,17), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1973,08,14), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1983,06,13), group:12, content:'通檢', type: 'point'},
+	{start: new Date(1993,05,28), group:12, content:'三通', type: 'point'},
+	
+	{start: new Date(1979,05,02), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1986,04,07), group:13, content:'一通', type: 'point'},
+	{start: new Date(1995,05,28), group:13, content:'二通', type: 'point'},
+	{start: new Date(2006,05,23), group:13, content:'三通', type: 'point'},
+	
+	{start: new Date(1977,08,01), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1990,05,22), group:14, content:'一通', type: 'point'},
+	
+	{start: new Date(1983,08,13), group:15, content:'擬定', type: 'point'},
+	{start: new Date(2000,08,26), group:15, content:'一通', type: 'point'},
+		
+	{start: new Date(1986,11,05), group:16, content:'擬定', type: 'point'},
+	{start: new Date(2001,02,20), group:16, content:'一通', type: 'point'},
+	
+	{start: new Date(1990,10,29), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1993,10,18), group:17, content:'一通(楊梅鎮轄區)', type: 'point'},
+	{start: new Date(1996,07,22), group:17, content:'一通', type: 'point'},
+	{start: new Date(2005,10,04), group:17, content:'二通', type: 'point'},
+
+
+
+	{start: new Date(), group:18, content:'', type: 'point'},
+	
+	{start: new Date(1912,11,16), group:19, content:'大嵙崁街市區計畫', type: 'point'},
+	{start: new Date(1956,01,06), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1975,06,01), group:19, content:'擴大', type: 'point'},
+	{start: new Date(1998,01,23), group:19, content:'二通', type: 'point'},
+	
+	{start: new Date(1961,10,16), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,01), group:20, content:'通檢', type: 'point'},
+	{start: new Date(2002,05,06), group:20, content:'二通', type: 'point'},
+	
+	{start: new Date(1970,04,12), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1998,07,25), group:21, content:'一通', type: 'point'},
+		
+	{start: new Date(1974,07,10), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1983,09,28), group:22, content:'一通', type: 'point'},
+	{start: new Date(1990,00,15), group:22, content:'二通', type: 'point'},
+	{start: new Date(1998,01,17), group:22, content:'三通', type: 'point'},	
+	{start: new Date(2013,01,06), group:22, content:'四通', type: 'point'},	
+
+	{start: new Date(1974,10,30), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1981,10,19), group:23, content:'一通', type: 'point'},
+	{start: new Date(1988,10,10), group:23, content:'二通', type: 'point'},
+	{start: new Date(2003,08,16), group:24, content:'三通', type: 'point'},
+	
+	{start: new Date(1981,02,09), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1992,01,18), group:24, content:'一通', type: 'point'},
+	{start: new Date(2005,08,22), group:24, content:'二通', type: 'point'},
+	
+	{start: new Date(1985,03,19), group:25, content:'擬定', type: 'point'},
+	{start: new Date(2002,02,25), group:25, content:'一通', type: 'point'},
+	
+
+
+	{start: new Date(), group:26, content:'', type: 'point'},
+	
+	{start: new Date(1970,10,30), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1986,09,30), group:27, content:'一通', type: 'point'},
+	{start: new Date(1996,05,10), group:27, content:'二通', type: 'point'},
+	{start: new Date(2005,10,11), group:27, content:'三通', type: 'point'},
+
+	{start: new Date(1982,08,27), group:28, content:'擬定', type: 'point'},
+	{start: new Date(1990,08,06), group:28, content:'一通', type: 'point'},
+	{start: new Date(2002,00,28), group:28, content:'二通', type: 'point'},
+
+
+	
+	{start: new Date(), group:29, content:'', type: 'point'},
+	
+	{start: new Date(1974,10,30), group:30, content:'擬定', type: 'point'},
+	{start: new Date(1983,03,20), group:30, content:'通檢', type: 'point'},
+	{start: new Date(1999,11,15), group:30, content:'一通', type: 'point'},
+	{start: new Date(2004,09,19), group:30, content:'二通', type: 'point'},
+
+	{start: new Date(1982,00,15), group:31, content:'擬定', type: 'point'},
+	{start: new Date(1992,11,07), group:31, content:'一通', type: 'point'},
+	{start: new Date(2001,00,30), group:31, content:'二通', type: 'point'},
+
+	{start: new Date(1982,10,03), group:32, content:'擬定', type: 'point'},
+	{start: new Date(1992,02,03), group:32, content:'一通', type: 'point'},
+	{start: new Date(2009,02,04), group:32, content:'二通(一階)', type: 'point'},
+	
+	{start: new Date(1985,02,12), group:33, content:'擬定', type: 'point'},
+	{start: new Date(1993,05,08), group:33, content:'一通', type: 'point'},
+	{start: new Date(2003,01,14), group:33, content:'二通', type: 'point'},
+
+
+
+	{start: new Date(), group:34, content:'', type: 'point'},
+	
+	{start: new Date(1976,00,05), group:35, content:'擬定', type: 'point'},
+	{start: new Date(1987,11,30), group:35, content:'一通', type: 'point'},
+	{start: new Date(2003,06,11), group:35, content:'二通', type: 'point'},
+	{start: new Date(2014,07,27), group:35, content:'三通(一階)', type: 'point'},
+
+	{start: new Date(1981,07,17), group:36, content:'擬定', type: 'point'},
+	{start: new Date(1986,02,18), group:36, content:'一通', type: 'point'},
+	{start: new Date(2002,11,19), group:36, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,07,28), group:37, content:'擬定', type: 'point'},
+	{start: new Date(1990,11,20), group:37, content:'一通', type: 'point'},
+	
+	{start: new Date(1998,01,17), group:38, content:'擬定', type: 'point'},
+	
+	{start: new Date(1999,08,30), group:39, content:'擬定', type: 'point'},
+	{start: new Date(2009,11,24), group:39, content:'一通', type: 'point'},
+	
+	{start: new Date(2010,04,01), group:40, content:'擬定', type: 'point'},
+	]);
+
+  var container = document.getElementById('visualization_ty');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_hjc" style="padding-top:50px">
+  <h3>新竹市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '新竹(含香山)都市計畫'},
+	{id: 2, value: 3, content: '高速公路新竹交流道附近特定區計畫'},
+	{id: 3, value: 4, content: '新竹科學工業園區特定區計畫'},
+	{id: 4, value: 5, content: '新竹市(朝山地區)都市計畫'},
+	{id: 5, value: 6, content: '新竹漁港特定區計畫'},
+	{id: 6, value: 7, content: '新竹科技特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(1905,04,09), group:1, content:'新竹街市區計畫', type: 'point'},
+	{start: new Date(1937,02,30), group:1, content:'新竹市市區計畫', type: 'point'},
+	{start: new Date(1956,04,28), group:1, content:'新竹市都市計劃', type: 'point'},
+	{start: new Date(1975,00,09), group:1, content:'香山都市計畫', type: 'point'},
+	{start: new Date(1996,02,26), group:1, content:'新竹(含香山)都市計畫(一通)', type: 'point'},
+	{start: new Date(2009,10,11), group:1, content:'二通', type: 'point'},
+	
+	{start: new Date(1978,02,02), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1981,04,20), group:2, content:'配合竹科工業區計畫調整', type: 'point'},
+	{start: new Date(1995,06,25), group:2, content:'二通', type: 'point'},
+	{start: new Date(2004,03,15), group:2, content:'擴大', type: 'point'},
+	{start: new Date(2014,03,22), group:2, content:'新竹市部分(一通)(一階)', type: 'point'},
+
+	{start: new Date(1981,04,20), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1991,06,22), group:3, content:'一通', type: 'point'},
+	{start: new Date(2006,05,27), group:3, content:'二通', type: 'point'},
+	{start: new Date(2015,00,13), group:3, content:'三通(一階)', type: 'point'},
+	{start: new Date(2016,01,15), group:3, content:'三通(二階)', type: 'point'},
+
+	{start: new Date(1981,07,20), group:4, content:'香山(朝山地區)都市計畫案', type: 'point'},
+	{start: new Date(1993,01,24), group:4, content:'新竹市(朝山地區)都市計畫(一通)', type: 'point'},
+	{start: new Date(2016,00,28), group:4, content:'擴大暨二通(二階)', type: 'point'},
+	
+	{start: new Date(1987,07,03), group:5, content:'擬定', type: 'point'},
+	{start: new Date(2001,07,23), group:5, content:'一通', type: 'point'},
+	{start: new Date(2014,08,16), group:5, content:'二通', type: 'point'},
+	
+	{start: new Date(2004,07,09), group:6, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_hjc');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_hj" style="padding-top:50px">
+  <h3>新竹縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '竹東都市計畫'},
+	{id: 2, value: 3, content: '北埔(含鄉公所地區)都市計畫'},
+	{id: 3, value: 4, content: '竹北(含斗崙地區)都市計畫', nestedGroups:[4,5]},
+	{id: 4, value: 5, content: '竹北都市計畫'},
+	{id: 5, value: 6, content: '竹北(斗崙地區)都市計畫'},
+	{id: 6, value: 7, content: '湖口都市計畫'},
+	{id: 7, value: 8, content: '新埔都市計畫'},
+	{id: 8, value: 9, content: '關西都市計畫'},
+	{id: 9, value:10, content: '寶山都市計畫'},
+	{id:10, value:11, content: '新豐(新庄子地區)都市計畫'},
+	{id:11, value:12, content: '新豐(山崎地區)都市計畫'},
+	{id:12, value:13, content: '橫山都市計畫'},
+	{id:13, value:14, content: '芎林都市計畫'},
+	{id:14, value:15, content: '湖口(老湖口地區)都市計畫'},
+	{id:15, value:16, content: '竹東(頭重、二重、三重地區)都市計畫', nestedGroups:[16,17]},
+	{id:16, value:17, content: '高速公路新竹交流道附近特定區計畫(竹縣部分)'},
+	{id:17, value:18, content: '竹東(二重、三重地區)都市計畫'},
+	{id:18, value:19, content: '清泉風景特定區計畫'},
+	{id:19, value:20, content: '高速鐵路新竹車站特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1935,06,01), group:1, content:'竹東市區計畫', type: 'point'},
+	{start: new Date(1955,07,23), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1969,08,18), group:1, content:'擴大', type: 'point'},
+	{start: new Date(1976,11,24), group:1, content:'一通', type: 'point'},
+	{start: new Date(1986,07,14), group:1, content:'二通', type: 'point'},
+	{start: new Date(1995,06,31), group:1, content:'三通', type: 'point'},
+	{start: new Date(2006,01,07), group:1, content:'四通', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:2, content:'北埔市區計畫', type: 'point'},
+	{start: new Date(1980,00,01), group:2, content:'北埔都市計畫', type: 'point'},
+	{start: new Date(1983,10,01), group:2, content:'北埔(鄉公所地區)都市計畫', type: 'point'},
+	{start: new Date(1992,00,01), group:2, content:'合併暨一通', type: 'point'},
+	{start: new Date(2004,01,15), group:2, content:'二通', type: 'point'},
+	{start: new Date(2011,01,23), group:2, content:'二通(保留案)', type: 'point'},
+	
+	{start: new Date(2005,07,08), group:3, content:'竹北(含斗崙地區)(三通)', type: 'point'},
+
+	{start: new Date(1972,09,02), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1983,08,29), group:4, content:'一通', type: 'point'},
+	{start: new Date(1996,05,13), group:4, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,01,22), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1985,03,06), group:5, content:'一通', type: 'point'},
+	{start: new Date(1996,05,12), group:5, content:'二通', type: 'point'},
+	
+	{start: new Date(1972,10,25), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1985,02,01), group:6, content:'一通', type: 'point'},
+	{start: new Date(2003,10,25), group:6, content:'二通', type: 'point'},
+	{start: new Date(2008,02,31), group:6, content:'二通(王爺壟地區)', type: 'point'},
+	
+	{start: new Date(1973,00,12), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1983,09,05), group:7, content:'一通', type: 'point'},
+	{start: new Date(1993,05,01), group:7, content:'二通', type: 'point'},
+	{start: new Date(2006,02,27), group:7, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,00,18), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1987,10,21), group:8, content:'一通', type: 'point'},
+	{start: new Date(1996,09,16), group:8, content:'二通', type: 'point'},
+	{start: new Date(2010,04,25), group:8, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1974,05,28), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1983,10,01), group:9, content:'一通', type: 'point'},
+	{start: new Date(1993,04,31), group:9, content:'二通', type: 'point'},
+	{start: new Date(2015,02,02), group:9, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,05,30), group:10, content:'新豐都市計畫', type: 'point'},
+	{start: new Date(1985,10,02), group:10, content:'新豐(新庄子地區)(一通)', type: 'point'},
+	{start: new Date(1992,04,15), group:10, content:'二通', type: 'point'},
+	{start: new Date(2010,02,12), group:10, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,05,30), group:11, content:'新豐都市計畫', type: 'point'},
+	{start: new Date(1987,09,21), group:11, content:'新豐(山崎地區)(一通)', type: 'point'},
+	{start: new Date(1992,09,05), group:11, content:'二通', type: 'point'},
+	{start: new Date(2015,11,10), group:11, content:'擴大暨三通', type: 'point'},
+	
+	{start: new Date(1975,10,04), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1984,01,01), group:12, content:'一通', type: 'point'},
+	{start: new Date(1994,08,01), group:12, content:'二通', type: 'point'},
+	{start: new Date(1998,06,03), group:12, content:'三通', type: 'point'},
+	{start: new Date(2011,11,16), group:12, content:'四通(一階)', type: 'point'},
+	{start: new Date(2011,11,24), group:12, content:'四通(二階)', type: 'point'},
+	
+	{start: new Date(1975,11,08), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1983,10,25), group:13, content:'一通', type: 'point'},
+	{start: new Date(1992,11,11), group:13, content:'二通', type: 'point'},
+	{start: new Date(2003,03,14), group:13, content:'三通', type: 'point'},
+	{start: new Date(2017,05,09), group:13, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1982,06,24), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1987,04,25), group:14, content:'一通', type: 'point'},
+	{start: new Date(2005,10,07), group:14, content:'二通', type: 'point'},
+	
+	{start: new Date(2003,11,08), group:15, content:'二通(合併新竹交流道(竹縣部分))', type: 'point'},
+	{start: new Date(2016,00,17), group:15, content:'三通(公展)', type: 'point'},
+		
+	{start: new Date(1978,02,02), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1981,04,20), group:16, content:'配合竹科工業區計畫調整', type: 'point'},
+	{start: new Date(1995,06,25), group:16, content:'二通', type: 'point'},
+		
+	{start: new Date(1982,02,23), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1992,11,01), group:17, content:'一通', type: 'point'},
+	
+	{start: new Date(1982,08,03), group:18, content:'擬定', type: 'point'},
+	{start: new Date(2001,02,27), group:18, content:'一通', type: 'point'},
+	{start: new Date(2008,08,25), group:18, content:'二通', type: 'point'},
+	
+	{start: new Date(1999,09,01), group:19, content:'擬定', type: 'point'},
+	{start: new Date(2006,02,01), group:19, content:'一通', type: 'point'},
+	{start: new Date(2011,00,17), group:19, content:'二通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_hj');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ml" style="padding-top:50px">
+  <h3>苗栗縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '苗栗都市計畫'},
+	{id: 2, value: 3, content: '竹南頭份都市計畫', nestedGroups: [3,4]},
+	{id: 3, value: 4, content: '竹南都市計畫'},
+	{id: 4, value: 5, content: '頭份都市計畫'},
+	{id: 5, value: 6, content: '大湖都市計畫'},
+	{id: 6, value: 7, content: '南庄都市計畫'},
+	{id: 7, value: 8, content: '公館都市計畫'},
+	{id: 8, value: 9, content: '卓蘭都市計畫'},
+	{id: 9, value: 10, content: '後龍都市計畫'},
+	{id: 10, value: 11, content: '銅鑼都市計畫'},
+	{id: 11, value: 12, content: '苑裡都市計畫'},
+	{id: 12, value: 13, content: '通霄都市計畫'},
+	{id: 13, value: 14, content: '三義都市計畫'},
+	{id: 14, value: 15, content: '造橋都市計畫'},
+	{id: 15, value: 16, content: '頭屋都市計畫'},
+	{id: 16, value: 17, content: '三灣都市計畫'},
+	{id: 17, value: 18, content: '高速公路苗栗交流道附近特定區計畫'},
+	{id: 18, value: 19, content: '明德水庫特定區計畫'},
+	{id: 19, value: 20, content: '高速公路頭份交流道附近特定區計畫'},
+	{id: 20, value: 21, content: '後龍外埔漁港特定區計畫'},
+	{id: 21, value: 22, content: '高速鐵路苗栗車站特定區計畫'},
+	{id: 22, value: 23, content: '竹南基地暨周邊地區特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(1938,06,01), group:1, content:'苗栗市區計畫', type: 'point'},
+	{start: new Date(1955,07,27), group:1, content:'苗栗縣都市計畫', type: 'point'},
+	{start: new Date(1971,06,01), group:1, content:'苗栗擴大都市計畫', type: 'point'},
+	{start: new Date(1980,01,04), group:1, content:'通檢', type: 'point'},
+	{start: new Date(1987,08,26), group:1, content:'二通', type: 'point'},
+	{start: new Date(1999,06,09), group:1, content:'三通', type: 'point'},
+	{start: new Date(2012,09,12), group:1, content:'四通(一階)', type: 'point'},
+	
+	{start: new Date(1972,05,11), group:2, content:'竹南頭份聯合都市計畫', type: 'point'},
+	{start: new Date(1985,04,04), group:2, content:'竹南頭份都市計畫(一通)', type: 'point'},
+	{start: new Date(1998,03,07), group:2, content:'二通', type: 'point'},
+	{start: new Date(2011,07,27), group:2, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:3, content:'竹南市區計畫', type: 'point'},
+	{start: new Date(1955,07,11), group:3, content:'竹南都市計畫', type: 'point'},
+
+	{start: new Date(1935,06,01), group:4, content:'頭分市區計畫', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:5, content:'大湖市區計畫', type: 'point'},
+	{start: new Date(1955,06,22), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1979,01,26), group:5, content:'擴大暨一通', type: 'point'},
+	{start: new Date(1987,08,03), group:5, content:'一通', type: 'point'},
+	{start: new Date(1995,11,28), group:5, content:'二通', type: 'point'},
+	{start: new Date(2013,01,21), group:5, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:6, content:'南庄市區計畫', type: 'point'},
+	{start: new Date(1955,07,18), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1980,02,11), group:6, content:'擴大', type: 'point'},
+	{start: new Date(1985,09,28), group:6, content:'一通', type: 'point'},
+	{start: new Date(1992,00,04), group:6, content:'二通', type: 'point'},
+	{start: new Date(2004,06,30), group:6, content:'三通', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:7, content:'公館市區計畫', type: 'point'},
+	{start: new Date(1958,10,12), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1973,07,29), group:7, content:'擴大暨一通', type: 'point'},
+	{start: new Date(1977,08,00), group:7, content:'通檢', type: 'point'},
+	{start: new Date(1986,11,01), group:7, content:'二通', type: 'point'},
+	{start: new Date(1992,07,17), group:7, content:'三通', type: 'point'},
+	{start: new Date(2003,09,31), group:7, content:'四通', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:8, content:'卓蘭市區計畫', type: 'point'},
+	{start: new Date(1959,09,07), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1981,04,14), group:8, content:'擴大', type: 'point'},
+	{start: new Date(1990,03,19), group:8, content:'一通', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:9, content:'後龍市區計畫', type: 'point'},
+	{start: new Date(1964,04,11), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1978,09,20), group:9, content:'擴大', type: 'point'},
+	{start: new Date(1987,02,27), group:9, content:'一通', type: 'point'},
+	{start: new Date(1996,04,07), group:9, content:'二通', type: 'point'},
+	{start: new Date(2006,09,02), group:9, content:'三通', type: 'point'},
+
+	{start: new Date(1935,06,01), group:10, content:'銅鑼市區計畫', type: 'point'},
+	{start: new Date(1980,03,14), group:10, content:'銅鑼擴大都市計畫', type: 'point'},
+	{start: new Date(1988,06,19), group:10, content:'一通', type: 'point'},
+	{start: new Date(1996,02,12), group:10, content:'二通', type: 'point'},
+	{start: new Date(2006,03,12), group:10, content:'三通', type: 'point'},
+	{start: new Date(2012,03,27), group:10, content:'四通', type: 'point'},
+	
+	{start: new Date(1937,02,08), group:11, content:'苑裡市區計畫', type: 'point'},
+	{start: new Date(1967,11,13), group:11, content:'苑裡都市計畫', type: 'point'},
+	{start: new Date(1976,02,18), group:11, content:'擴大', type: 'point'},
+	{start: new Date(1989,10,25), group:11, content:'二通', type: 'point'},
+	{start: new Date(1991,11,26), group:11, content:'三通', type: 'point'},
+	{start: new Date(2004,10,10), group:11, content:'四通', type: 'point'},
+	
+	{start: new Date(1937,02,08), group:12, content:'通霄市區計畫', type: 'point'},
+	{start: new Date(1981,10,07), group:12, content:'通霄都市計畫', type: 'point'},
+	{start: new Date(1988,07,09), group:12, content:'一通', type: 'point'},
+	{start: new Date(1997,08,16), group:12, content:'二通', type: 'point'},
+	{start: new Date(2012,11,19), group:12, content:'三通', type: 'point'},
+	
+	{start: new Date(1955,05,13), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1989,04,02), group:13, content:'擴大暨一通', type: 'point'},
+	{start: new Date(1997,10,17), group:13, content:'二通', type: 'point'},
+	{start: new Date(2008,01,15), group:13, content:'三通', type: 'point'},
+
+	{start: new Date(1973,07,29), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1988,01,09), group:14, content:'一通', type: 'point'},
+	{start: new Date(1999,08,10), group:14, content:'二通', type: 'point'},
+
+	{start: new Date(1973,07,29), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1981,08,23), group:15, content:'通檢', type: 'point'},
+	{start: new Date(1987,07,21), group:15, content:'二通', type: 'point'},
+	{start: new Date(2006,04,18), group:15, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,08,13), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,11), group:16, content:'通檢', type: 'point'},
+		
+	{start: new Date(1977,08,01), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1985,02,28), group:17, content:'一通', type: 'point'},
+	{start: new Date(1992,02,11), group:17, content:'二通', type: 'point'},
+	{start: new Date(2009,10,06), group:17, content:'三通', type: 'point'},
+	
+	{start: new Date(1977,08,09), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1987,04,25), group:18, content:'一通', type: 'point'},
+	{start: new Date(1998,01,06), group:18, content:'二通', type: 'point'},
+	{start: new Date(2009,02,09), group:18, content:'三通', type: 'point'},
+	
+	{start: new Date(1978,01,15), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1985,09,28), group:19, content:'一通', type: 'point'},
+	{start: new Date(1991,05,06), group:19, content:'二通', type: 'point'},
+	{start: new Date(2001,10,20), group:19, content:'三通', type: 'point'},
+	{start: new Date(2013,02,21), group:19, content:'四通(一階)', type: 'point'},
+	
+	{start: new Date(1981,04,15), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1987,01,06), group:20, content:'一通', type: 'point'},
+	{start: new Date(2000,02,14), group:20, content:'二通', type: 'point'},
+	{start: new Date(2009,09,27), group:20, content:'三通', type: 'point'},
+	
+	{start: new Date(2007,10,27), group:21, content:'擬定', type: 'point'},
+	
+	{start: new Date(2009,11,31), group:22, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_ml');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_tc" style="padding-top:50px">
+  <h3>台中市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '台中市都市計畫'},
+	{id: 2, value: 3, content: '豐原都市計畫'},
+	{id: 3, value: 4, content: '大甲都市計畫'},
+	{id: 4, value: 5, content: '台中港特定區都市計畫'},
+	{id: 5, value: 6, content: '神岡都市計畫'},
+	{id: 6, value: 7, content: '石岡水壩特定區計畫'},
+	{id: 7, value: 8, content: '后里都市計畫'},
+	{id: 8, value: 9, content: '東勢都市計畫'},
+	{id: 9, value:10, content: '梨山風景特定區計畫'},
+	{id:10, value:11, content: '大平霧地區都市計畫' ,nestedGroups: [11,12,13]},
+	{id:11, value:12, content: '霧峰都市計畫'},
+	{id:12, value:13, content: '大里都市計畫'},
+	{id:13, value:14, content: '太平都市計畫'},
+	{id:14, value:15, content: '烏日都市計畫'},
+	{id:15, value:16, content: '大雅都市計畫'},
+	{id:16, value:17, content: '潭子都市計畫'},
+	{id:17, value:18, content: '外埔都市計畫'},
+	{id:18, value:19, content: '大肚都市計畫'},
+	{id:19, value:20, content: '新社都市計畫'},
+	{id:20, value:21, content: '大安都市計畫'},
+	{id:21, value:22, content: '高速公路豐原交流道附近特定區計畫'},
+	{id:22, value:23, content: '高速公路王田交流道附近特定區計畫'},
+	{id:23, value:24, content: '太平(新光)都市計畫'},
+	{id:24, value:25, content: '大里(草湖地區)都市計畫'},
+	{id:25, value:26, content: '大甲(日南地區)都市計畫'},
+	{id:26, value:27, content: '谷關風景特定區計畫'},
+	{id:27, value:28, content: '鐵砧山風景特定區計畫'},
+	{id:28, value:29, content: '台中市大坑風景特定區計畫'},
+	{id:29, value:30, content: '中部科學工業園區台中基地附近特定區計畫'},
+  ])
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2010,11,25), group:0, content:'台中市升格', className:'event'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1900,00,16), group:1, content:'台中市區計畫', type: 'point'},
+	{start: new Date(1911,00,01), group:1, content:'台中市區計畫', type: 'point'},
+	{start: new Date(1921,00,01), group:1, content:'市區計畫變更', type: 'point'},
+	{start: new Date(1935,00,01), group:1, content:'擴張', type: 'point'},
+	{start: new Date(1942,02,21), group:1, content:'台中市都市計畫', type: 'point'},
+	{start: new Date(1956,10,01), group:1, content:'發布', type: 'point'},
+	{start: new Date(1975,04,23), group:1, content:'第一期擴大(西屯地區)', type: 'point'},
+	{start: new Date(1977,01,28), group:1, content:'第二、三、四期擴大', type: 'point'},
+	{start: new Date(1986,01,22), group:1, content:'一通', type: 'point'},
+	{start: new Date(1995,01,15), group:1, content:'二通', type: 'point'},
+
+	{start: new Date(1917,00,01), group:2, content:'豐原市區改正', type: 'point'},
+	{start: new Date(1935,06,01), group:2, content:'市區計畫', type: 'point'},
+	{start: new Date(1956,00,01), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1958,00,01), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1981,00,01), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1987,11,01), group:2, content:'一通', type: 'point'},
+	{start: new Date(2010,05,01), group:2, content:'二通', type: 'point'},
+
+	{start: new Date(1934,06,31), group:3, content:'大甲街市區計畫', type: 'point'},
+	{start: new Date(1955,05,08), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1974,10,16), group:3, content:'擴大', type: 'point'},
+	{start: new Date(1983,04,30), group:3, content:'一通', type: 'point'},
+	{start: new Date(1992,03,29), group:3, content:'二通', type: 'point'},
+	{start: new Date(2010,11,09), group:3, content:'三通(一階)', type: 'point'},
+	{start: new Date(2011,01,21), group:3, content:'三通(二階)', type: 'point'},
+	{start: new Date(2015,09,24), group:3, content:'三通(三階)', type: 'point'},
+
+	{start: new Date(1935,06,01), group:4, content:'清水、沙鹿、梧棲市區計畫', type: 'point'},
+	{start: new Date(1940,07,15), group:4, content:'新高港附近都市計畫', type: 'point'},
+	{start: new Date(1972,01,00), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1982,06,01), group:4, content:'龍井鄉部分(通檢)', type: 'point'},
+	{start: new Date(1986,01,01), group:4, content:'不含龍井鄉部分(一通)', type: 'point'},
+	{start: new Date(1998,04,25), group:4, content:'二通', type: 'point'},
+	{start: new Date(2014,11,01), group:4, content:'三通(一階)', type: 'point'},
+	{start: new Date(2015,06,01), group:4, content:'三通(二階)', type: 'point'},
+	{start: new Date(2016,10,30), group:4, content:'三通(三階)', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:5, content:'神岡市區計畫', type: 'point'},
+	{start: new Date(1955,09,12), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1980,05,25), group:5, content:'擴大', type: 'point'},
+	{start: new Date(1987,03,21), group:5, content:'一通', type: 'point'},
+	{start: new Date(1995,04,26), group:5, content:'二通', type: 'point'},
+	{start: new Date(2013,02,28), group:5, content:'三通(一階)', type: 'point'},
+	{start: new Date(2015,11,17), group:5, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1935,06,01), group:6, content:'石岡市區計畫', type: 'point'},
+	{start: new Date(1979,10,01), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1989,01,01), group:6, content:'一通', type: 'point'},
+	{start: new Date(1996,01,01), group:6, content:'二通', type: 'point'},
+	{start: new Date(2006,04,15), group:6, content:'三通', type: 'point'},
+
+	{start: new Date(1935,06,01), group:7, content:'內埔市區計畫', type: 'point'},
+	{start: new Date(1955,05,20), group:7, content:'后里都市計畫', type: 'point'},
+	{start: new Date(1980,07,07), group:7, content:'擴大', type: 'point'},
+	{start: new Date(1990,00,03), group:7, content:'一通', type: 'point'},
+	{start: new Date(2003,11,17), group:7, content:'二通', type: 'point'},
+
+	{start: new Date(1941,03,13), group:8, content:'東勢都市計畫', type: 'point'},
+	{start: new Date(1955,09,24), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1975,05,01), group:8, content:'擴大', type: 'point'},
+	{start: new Date(1997,01,01), group:8, content:'一通', type: 'point'},
+	{start: new Date(2007,06,01), group:8, content:'二通', type: 'point'},
+	
+	{start: new Date(1965,06,09), group:9, content:'梨山風景特定區計畫(梨山地區)', type: 'point'},
+	{start: new Date(1986,03,07), group:9, content:'梨山地區通檢暨新增新佳陽、松茂、環山地區)', type: 'point'},
+	{start: new Date(1999,08,18), group:9, content:'二通', type: 'point'},
+	{start: new Date(2012,08,27), group:9, content:'三通', type: 'point'},
+	
+	{start: new Date(2016,03,08), group:10, content:'擬定(公展)', type: 'point'},
+		
+	{start: new Date(1966,06,08), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1979,03,23), group:11, content:'一通', type: 'point'},
+	{start: new Date(1997,06,24), group:11, content:'擴大暨二通', type: 'point'},
+	{start: new Date(2006,03,17), group:11, content:'三通', type: 'point'},
+	
+	{start: new Date(1973,10,01), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1985,08,01), group:12, content:'一通', type: 'point'},
+	{start: new Date(1991,07,01), group:12, content:'二通', type: 'point'},
+	{start: new Date(2002,01,01), group:12, content:'三通', type: 'point'},
+	{start: new Date(2015,09,27), group:12, content:'四通(一階)', type: 'point'},
+	
+	{start: new Date(1975,00,09), group:13, content:'太平鄉都市計畫', type: 'point'},
+	{start: new Date(1980,09,14), group:13, content:'太平、中平、東平三村部分轄區鄉街計畫', type: 'point'},
+	{start: new Date(1985,02,27), group:13, content:'太平鄉都市計畫(通檢)', type: 'point'},
+	{start: new Date(1991,11,12), group:13, content:'中平地區(一通)', type: 'point'},
+	{start: new Date(2007,11,10), group:13, content:'合併為太平都市計畫(二通)', type: 'point'},
+	{start: new Date(2015,00,27), group:13, content:'二通保留案', type: 'point'},
+	
+	{start: new Date(1972,10,30), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1988,01,25), group:14, content:'一通', type: 'point'},
+	{start: new Date(1995,00,23), group:14, content:'二通', type: 'point'},
+	{start: new Date(2002,11,10), group:14, content:'三通', type: 'point'},
+		
+	{start: new Date(1973,00,30), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,13), group:15, content:'一通', type: 'point'},
+	{start: new Date(1999,06,12), group:15, content:'二通', type: 'point'},
+	{start: new Date(2014,05,18), group:15, content:'三通(一階)', type: 'point'},
+	{start: new Date(2015,11,17), group:15, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1973,06,06), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1976,02,10), group:16, content:'一通', type: 'point'},
+	{start: new Date(1985,03,11), group:16, content:'二通', type: 'point'},
+	{start: new Date(2005,02,23), group:16, content:'三通', type: 'point'},
+	{start: new Date(2017,01,08), group:16, content:'四通', type: 'point'},
+	
+	{start: new Date(1973,10,03), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,25), group:17, content:'一通', type: 'point'},
+	{start: new Date(1994,08,03), group:17, content:'二通', type: 'point'},
+	{start: new Date(2013,08,19), group:17, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,01,01), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1988,02,01), group:18, content:'一通', type: 'point'},
+	{start: new Date(1997,10,13), group:18, content:'二通', type: 'point'},
+	{start: new Date(2014,01,07), group:18, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1974,05,26), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1983,02,12), group:19, content:'一通', type: 'point'},
+	{start: new Date(1990,05,04), group:19, content:'二通', type: 'point'},
+	{start: new Date(2001,02,12), group:19, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,01,28), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1980,11,01), group:20, content:'一通', type: 'point'},
+	{start: new Date(1990,01,01), group:20, content:'二通', type: 'point'},
+	{start: new Date(2000,04,01), group:20, content:'三通', type: 'point'},
+	
+	{start: new Date(1977,07,12), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1986,05,05), group:21, content:'一通', type: 'point'},
+	{start: new Date(2000,03,25), group:21, content:'二通', type: 'point'},
+	{start: new Date(2015,02,10), group:21, content:'三通(一階)', type: 'point'},	
+	{start: new Date(2015,09,27), group:21, content:'三通(二階)', type: 'point'},	
+	
+	{start: new Date(1978,02,08), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,30), group:22, content:'一通', type: 'point'},
+	{start: new Date(2002,02,06), group:22, content:'二通', type: 'point'},
+	{start: new Date(2015,03,15), group:22, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1980,08,12), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1991,06,22), group:23, content:'一通', type: 'point'},
+	{start: new Date(1997,07,07), group:23, content:'二通', type: 'point'},
+	{start: new Date(1999,03,08), group:24, content:'擴大', type: 'point'},
+	
+	{start: new Date(1981,04,07), group:24, content:'大里草湖塗城一帶鄉街計畫案', type: 'point'},
+	{start: new Date(1993,03,10), group:24, content:'大里(草湖地區)都市計畫(一通)', type: 'point'},
+	{start: new Date(2003,00,20), group:24, content:'二通', type: 'point'},
+	{start: new Date(2015,09,27), group:24, content:'三通', type: 'point'},
+	
+	{start: new Date(1981,11,01), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1989,11,01), group:25, content:'一通', type: 'point'},
+	{start: new Date(2011,10,24), group:25, content:'二通', type: 'point'},
+	
+	{start: new Date(1983,11,17), group:26, content:'擬定', type: 'point'},
+	{start: new Date(1990,04,18), group:26, content:'一通', type: 'point'},
+	{start: new Date(2001,08,10), group:26, content:'二通', type: 'point'},
+	{start: new Date(2013,10,05), group:26, content:'三通', type: 'point'},
+
+	{start: new Date(1985,04,07), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1997,04,26), group:27, content:'一通', type: 'point'},
+	{start: new Date(2004,05,21), group:27, content:'二通', type: 'point'},
+
+	{start: new Date(2014,02,26), group:28, content:'擬定', type: 'point'},
+
+	{start: new Date(2014,05,24), group:29, content:'擬定', type: 'point'},
+	]);
+
+  var container = document.getElementById('visualization_tc');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ch" style="padding-top:50px">
+  <h3>彰化縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '彰化都市計畫'},
+	{id: 2, value: 3, content: '北斗都市計畫'},
+	{id: 3, value: 4, content: '鹿港福興都市計畫'},
+	{id: 4, value: 5, content: '員林都市計畫'},
+	{id: 5, value: 6, content: '和美都市計畫'},
+	{id: 6, value: 7, content: '二林都市計畫'},
+	{id: 7, value: 8, content: '溪湖都市計畫'},
+	{id: 8, value: 9, content: '田中都市計畫'},
+	{id: 9, value:10, content: '伸港(水尾地區)都市計畫'},
+	{id:10, value:11, content: '社頭都市計畫'},
+	{id:11, value:12, content: '芳苑都市計畫'},
+	{id:12, value:13, content: '永靖都市計畫'},
+	{id:13, value:14, content: '花壇都市計畫'},
+	{id:14, value:15, content: '芬園都市計畫'},
+	{id:15, value:16, content: '埔心都市計畫'},
+	{id:16, value:17, content: '高速公路員林交流道附近特定區計畫'},
+	{id:17, value:18, content: '高速公路彰化交流道附近特定區計畫'},
+	{id:18, value:19, content: '田尾都市計畫'},
+	{id:19, value:20, content: '大城都市計畫'},
+	{id:20, value:21, content: '二水都市計畫'},
+	{id:21, value:22, content: '竹塘都市計畫'},
+	{id:22, value:23, content: '八卦山脈風景特定區計畫'},
+	{id:23, value:24, content: '溪州都市計畫'},
+	{id:24, value:25, content: '田尾園藝特定區(公路公園)計畫'},
+	{id:25, value:26, content: '線西都市計畫'},
+	{id:26, value:27, content: '秀水都市計畫'},
+	{id:27, value:28, content: '埔鹽都市計畫'},
+	{id:28, value:29, content: '埤頭都市計畫'},
+	{id:29, value:30, content: '大村都市計畫'},
+	{id:30, value:31, content: '高速鐵路彰化車站特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1906,02,06), group:1, content:'彰化市區計畫', type: 'point'},
+	{start: new Date(1938,00,01), group:1, content:'彰化都市計畫', type: 'point'},
+	{start: new Date(1955,10,04), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1970,03,03), group:1, content:'修訂', type: 'point'},
+	{start: new Date(2004,07,02), group:1, content:'一通', type: 'point'},
+
+	{start: new Date(1912,05,06), group:2, content:'北斗街市區改正', type: 'point'},
+	{start: new Date(1943,03,28), group:2, content:'北斗都市計畫', type: 'point'},
+	{start: new Date(1955,06,16), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1967,00,09), group:2, content:'修訂', type: 'point'},
+	{start: new Date(1972,00,08), group:2, content:'修正', type: 'point'},
+	{start: new Date(1977,11,20), group:2, content:'一通', type: 'point'},
+	{start: new Date(1989,09,06), group:2, content:'二通', type: 'point'},
+	{start: new Date(2009,11,30), group:2, content:'三通(一階)', type: 'point'},
+	{start: new Date(2010,11,31), group:2, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1935,00,11), group:3, content:'鹿港街市區計畫', type: 'point'},
+	{start: new Date(1955,04,14), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1986,00,17), group:3, content:'一通', type: 'point'},
+	{start: new Date(2002,09,10), group:3, content:'二通', type: 'point'},
+	{start: new Date(2015,08,16), group:3, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1936,07,26), group:4, content:'員林街市區計畫', type: 'point'},
+	{start: new Date(1955,06,18), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1969,00,25), group:4, content:'擴大都市計劃', type: 'point'},
+	{start: new Date(1980,03,29), group:4, content:'一通', type: 'point'},
+	{start: new Date(1996,03,12), group:4, content:'二通', type: 'point'},
+	{start: new Date(2007,06,25), group:4, content:'三通', type: 'point'},
+	{start: new Date(2009,06,21), group:4, content:'三通(二階重劃地區)', type: 'point'},
+	
+	{start: new Date(1970,10,10), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1985,08,21), group:5, content:'一通', type: 'point'},
+	{start: new Date(1996,06,25), group:5, content:'二通', type: 'point'},
+	{start: new Date(2005,10,17), group:5, content:'三通', type: 'point'},
+	
+	{start: new Date(1970,10,13), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1985,04,14), group:6, content:'一通', type: 'point'},
+	{start: new Date(1998,05,24), group:6, content:'二通', type: 'point'},
+	
+	{start: new Date(1971,05,25), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1986,09,24), group:7, content:'一通', type: 'point'},
+	
+	{start: new Date(1971,05,25), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1998,01,06), group:8, content:'一通', type: 'point'},
+
+	{start: new Date(1972,06,01), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1986,08,02), group:9, content:'一通', type: 'point'},
+	{start: new Date(2003,09,08), group:9, content:'二通', type: 'point'},
+	{start: new Date(2016,03,20), group:9, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1973,07,03), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1992,02,18), group:10, content:'一通', type: 'point'},
+	{start: new Date(2010,09,14), group:10, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,02,05), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1987,11,30), group:11, content:'一通', type: 'point'},
+	{start: new Date(1998,08,20), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,04,24), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1988,07,23), group:12, content:'一通', type: 'point'},
+	{start: new Date(1996,06,11), group:12, content:'二通', type: 'point'},
+	{start: new Date(2011,04,17), group:12, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,07,12), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,20), group:13, content:'一通', type: 'point'},
+	{start: new Date(1992,02,18), group:13, content:'二通', type: 'point'},
+	{start: new Date(2005,01,15), group:13, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,09,01), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1985,07,24), group:14, content:'一通', type: 'point'},
+	{start: new Date(2005,04,29), group:14, content:'二通', type: 'point'},
+	
+	{start: new Date(1976,11,28), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1985,04,27), group:15, content:'一通', type: 'point'},
+	{start: new Date(1998,01,03), group:15, content:'二通', type: 'point'},
+	{start: new Date(2017,01,09), group:15, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1978,06,11), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1984,07,18), group:16, content:'一通', type: 'point'},
+	{start: new Date(1994,05,29), group:16, content:'二通', type: 'point'},
+	{start: new Date(2004,06,23), group:16, content:'三通', type: 'point'},
+	
+	{start: new Date(1978,07,11), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1985,05,26), group:17, content:'一通', type: 'point'},
+	{start: new Date(2005,02,10), group:17, content:'二通', type: 'point'},
+	{start: new Date(2015,10,05), group:17, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1980,00,31), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1991,10,15), group:18, content:'一通', type: 'point'},
+	{start: new Date(2004,03,05), group:18, content:'二通', type: 'point'},
+	
+	{start: new Date(1980,01,21), group:19, content:'擬定', type: 'point'},
+	{start: new Date(2007,03,10), group:19, content:'一通', type: 'point'},
+	
+	{start: new Date(1980,03,25), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1988,06,12), group:20, content:'一通', type: 'point'},
+	{start: new Date(2010,07,02), group:20, content:'二通', type: 'point'},
+	
+	{start: new Date(1980,07,15), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1988,05,28), group:21, content:'一通', type: 'point'},
+	{start: new Date(1999,03,03), group:21, content:'二通', type: 'point'},
+	
+	{start: new Date(1980,05,27), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1991,09,24), group:22, content:'一通', type: 'point'},
+	{start: new Date(2008,04,28), group:22, content:'二通(彰化縣部分第一階段)', type: 'point'},
+	
+	{start: new Date(1980,10,25), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1989,11,13), group:23, content:'一通', type: 'point'},
+
+	{start: new Date(1981,02,03), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1989,09,28), group:24, content:'一通', type: 'point'},
+	{start: new Date(1997,06,26), group:24, content:'二通', type: 'point'},
+	{start: new Date(2009,00,16), group:24, content:'三通', type: 'point'},
+	
+	{start: new Date(1982,04,12), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1991,02,28), group:25, content:'一通', type: 'point'},
+	{start: new Date(2001,08,27), group:25, content:'二通(暫停辦理予以結案)', type: 'point'},
+	{start: new Date(2016,10,16), group:25, content:'二通(一階)', type: 'point'},
+	
+	{start: new Date(1982,07,10), group:26, content:'擬定', type: 'point'},
+	{start: new Date(1989,04,17), group:26, content:'一通', type: 'point'},
+	{start: new Date(2016,06,14), group:26, content:'二通', type: 'point'},
+
+	{start: new Date(1983,03,14), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1990,08,20), group:27, content:'一通', type: 'point'},
+	{start: new Date(2002,06,01), group:27, content:'二通', type: 'point'},
+
+	{start: new Date(1985,07,10), group:28, content:'擬定', type: 'point'},
+	{start: new Date(1996,09,11), group:28, content:'一通', type: 'point'},
+	{start: new Date(2017,03,20), group:28, content:'二通(一階)', type: 'point'},
+
+	{start: new Date(1989,00,27), group:29, content:'擬定', type: 'point'},
+	{start: new Date(1998,00,13), group:29, content:'一通', type: 'point'},
+	
+	{start: new Date(2011,02,14), group:30, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_ch');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_nt" style="padding-top:50px">
+  <h3>南投縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '南投(含南崗地區)都市計畫', nestedGroups:[2,3 ]},
+	{id: 2, value: 3, content: '南投都市計畫'},
+	{id: 3, value: 4, content: '南投(南崗地區)都市計畫'},
+	{id: 4, value: 5, content: '埔里都市計畫'},
+	{id: 5, value: 6, content: '竹山(含延平地區)都市計畫', nestedGroups:[6,7]},
+	{id: 6, value: 7, content: '竹山都市計畫'},
+	{id: 7, value: 8, content: '竹山鎮延平地區主要計畫'},
+	{id: 8, value: 9, content: '水里都市計畫'},
+	{id: 9, value:10, content: '草屯都市計畫'},
+	{id:10, value:11, content: '中興新村(含南內轆地區)都市計畫'},
+	{id:11, value:12, content: '霧社都市計畫'},
+	{id:12, value:13, content: '集集都市計畫'},
+	{id:13, value:14, content: '日月潭特定區計畫'},
+	{id:14, value:15, content: '國姓都市計畫'},
+	{id:15, value:16, content: '中寮都市計畫'},
+	{id:16, value:17, content: '魚池都市計畫'},
+	{id:17, value:18, content: '鹿谷都市計畫'},
+	{id:18, value:19, content: '名間都市計畫'},
+	{id:19, value:20, content: '溪頭森林遊樂特定區'},
+	{id:20, value:21, content: '鳳凰谷風景特定區'},
+	{id:21, value:22, content: '八卦山脈風景特定區計畫'},
+	{id:22, value:23, content: '翠峰風景特定區計畫'},
+	{id:23, value:24, content: '東埔風景特定區計畫'},
+	{id:24, value:25, content: '廬山風景特定區'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(2015,06,07), group:1, content:'合併通檢(一階)', type: 'point'},
+	{start: new Date(2005,06,27), group:2, content:'四通', type: 'point'},
+
+	{start: new Date(1912,07,25), group:2, content:'南投街市區計畫', type: 'point'},
+	{start: new Date(1938,06,16), group:2, content:'南投都市計畫', type: 'point'},
+	{start: new Date(1956,10,23), group:2, content:'擴大核定', type: 'point'},
+	{start: new Date(1974,04,15), group:2, content:'一通', type: 'point'},
+	{start: new Date(1988,09,19), group:2, content:'三通', type: 'point'},
+		
+	{start: new Date(1980,09,18), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,24), group:3, content:'一通', type: 'point'},
+		
+	{start: new Date(1914,08,29), group:4, content:'埔里社街市區計畫', type: 'point'},
+	{start: new Date(1937,02,31), group:4, content:'埔里市街市區計畫', type: 'point'},
+	{start: new Date(1943,03,28), group:4, content:'埔里都市計畫', type: 'point'},
+	{start: new Date(1955,04,06), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1980,01,25), group:4, content:'一通', type: 'point'},
+	{start: new Date(1986,10,15), group:4, content:'二通', type: 'point'},
+	{start: new Date(2005,09,17), group:4, content:'三通', type: 'point'},
+	
+	{start: new Date(2013,05,20), group:5, content:'合併通盤檢討(一階)', type: 'point'},
+	{start: new Date(2014,07,26), group:5, content:'二階', type: 'point'},
+	
+	{start: new Date(1917,06,12), group:6, content:'林圮埔市區計畫', type: 'point'},
+	{start: new Date(1937,02,31), group:6, content:'竹山庄市區計畫', type: 'point'},
+	{start: new Date(1973,02,21), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1987,01,25), group:6, content:'一通', type: 'point'},
+	
+	{start: new Date(1984,06,01), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1999,02,25), group:7, content:'一通', type: 'point'},
+	
+	{start: new Date(1942,02,21), group:8, content:'水裡坑都市計畫', type: 'point'},
+	{start: new Date(1969,08,19), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1988,01,26), group:8, content:'一通', type: 'point'},
+	{start: new Date(1993,04,13), group:8, content:'二通', type: 'point'},
+	{start: new Date(2006,10,15), group:8, content:'二通', type: 'point'},
+	
+	{start: new Date(1943,03,28), group:9, content:'草屯街都市計畫', type: 'point'},
+	{start: new Date(1961,08,20), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1985,10,14), group:9, content:'一通', type: 'point'},
+	{start: new Date(2012,04,16), group:9, content:'二通(一階)', type: 'point'},
+	{start: new Date(2015,09,16), group:9, content:'二通(二階)', type: 'point'},
+	
+	{start: new Date(1961,07,24), group:10, content:'中興新村都市計畫', type: 'point'},
+	{start: new Date(1984,02,20), group:10, content:'中興新村(含南內轆地區)都市計畫(通檢)', type: 'point'},
+	{start: new Date(2015,10,18), group:10, content:'二通', type: 'point'},
+	
+	{start: new Date(1967,09,12), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,30), group:11, content:'一通', type: 'point'},
+	{start: new Date(1998,03,24), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1971,10,04), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1995,09,09), group:12, content:'一通', type: 'point'},
+	{start: new Date(2012,02,30), group:12, content:'二通', type: 'point'},
+		
+	{start: new Date(1972,03,23), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1986,09,24), group:13, content:'一通', type: 'point'},
+	{start: new Date(2015,05,25), group:13, content:'二通', type: 'point'},
+		
+	{start: new Date(1972,11,11), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1986,08,17), group:14, content:'一通', type: 'point'},
+		
+	{start: new Date(1972,11,12), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1984,06,30), group:15, content:'一通', type: 'point'},
+	{start: new Date(1992,00,23), group:15, content:'二通', type: 'point'},
+	{start: new Date(2006,00,12), group:15, content:'三通', type: 'point'},
+	
+	{start: new Date(1973,10,16), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1986,02,08), group:16, content:'一通', type: 'point'},
+	{start: new Date(1997,11,31), group:16, content:'二通', type: 'point'},
+	{start: new Date(2014,11,09), group:16, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,11,19), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1984,07,27), group:17, content:'一通', type: 'point'},
+	{start: new Date(1994,02,14), group:17, content:'二通', type: 'point'},
+		
+	{start: new Date(1975,01,27), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1982,01,23), group:18, content:'一通', type: 'point'},
+	{start: new Date(1889,11,15), group:18, content:'二通', type: 'point'},
+	{start: new Date(2015,02,18), group:18, content:'三通', type: 'point'},
+	
+	{start: new Date(1976,04,07), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1982,07,25), group:19, content:'溪頭森林遊樂區特定區計畫', type: 'point'},
+	{start: new Date(1987,09,05), group:19, content:'一通', type: 'point'},
+	{start: new Date(1999,09,26), group:19, content:'二通', type: 'point'},
+	{start: new Date(2011,04,20), group:19, content:'三通(一階)', type: 'point'},
+	{start: new Date(2013,02,04), group:19, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1980,03,07), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1988,00,16), group:20, content:'一通', type: 'point'},
+	{start: new Date(1998,02,21), group:20, content:'二通', type: 'point'},
+	{start: new Date(2014,10,13), group:20, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1980,05,19), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1991,09,24), group:21, content:'一通', type: 'point'},
+	{start: new Date(2009,10,06), group:21, content:'二通(南投縣部分)', type: 'point'},
+	
+	{start: new Date(1980,11,01), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,26), group:22, content:'一通', type: 'point'},
+	{start: new Date(1996,09,19), group:22, content:'二通', type: 'point'},
+	
+	{start: new Date(1983,03,29), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1993,04,12), group:23, content:'一通', type: 'point'},
+
+	{start: new Date(1886,11,13), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1994,11,21), group:24, content:'一通', type: 'point'},
+	{start: new Date(2011,07,05), group:24, content:'二通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_nt');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_yl" style="padding-top:50px">
+  <h3>雲林縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '斗六(含大潭地區)都市計畫'},
+	{id: 2, value: 3, content: '北港都市計畫'},
+	{id: 3, value: 4, content: '斗南都市計畫'},
+	{id: 4, value: 5, content: '西螺都市計畫'},
+	{id: 5, value: 6, content: '虎尾都市計畫'},
+	{id: 6, value: 7, content: '土庫都市計畫'},
+	{id: 7, value: 8, content: '莿桐都市計畫'},
+	{id: 8, value: 9, content: '林內都市計畫'},
+	{id: 9, value:10, content: '古坑都市計畫'},
+	{id:10, value:11, content: '元長都市計畫'},
+	{id:11, value:12, content: '二崙都市計畫'},
+	{id:12, value:13, content: '大埤都市計畫'},
+	{id:13, value:14, content: '崙背都市計畫'},
+	{id:14, value:15, content: '褒忠都市計畫'},
+	{id:15, value:16, content: '麥寮都市計畫'},
+	{id:16, value:17, content: '台西都市計畫'},
+	{id:17, value:18, content: '水林都市計畫'},
+	{id:18, value:19, content: '四湖都市計畫'},
+	{id:19, value:20, content: '草嶺都市計畫'},
+	{id:20, value:21, content: '斗南交流道特定區計畫'},
+	{id:21, value:22, content: '口湖都市計畫'},
+	{id:22, value:23, content: '箔子寮漁港特定區計畫'},
+	{id:23, value:24, content: '東勢都市計畫'},
+	{id:24, value:25, content: '斗六嘉東特定區計畫'},
+	{id:25, value:26, content: '高鐵雲林車站特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1924,09,23), group:1, content:'斗六街市區改正計畫', type: 'point'},
+	{start: new Date(1927,05,25), group:1, content:'斗六街市區擴張計畫', type: 'point'},
+	{start: new Date(1972,06,12), group:1, content:'斗六鎮擴大都市計畫', type: 'point'},
+	{start: new Date(1984,00,05), group:1, content:'一通', type: 'point'},
+	{start: new Date(1984,00,15), group:1, content:'斗六(大潭地區)', type: 'point'},
+	{start: new Date(1989,05,26), group:1, content:'斗六大潭(一通)', type: 'point'},
+	{start: new Date(1994,05,01), group:1, content:'合併變更斗六(大潭地區)都市計畫(二通)', type: 'point'},
+	{start: new Date(2007,10,01), group:1, content:'三通', type: 'point'},
+
+	{start: new Date(1913,05,27), group:2, content:'北港市區計畫', type: 'point'},
+	{start: new Date(1940,00,01), group:2, content:'北港都市計畫', type: 'point'},
+	{start: new Date(1955,03,23), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1977,11,06), group:2, content:'擴大通檢', type: 'point'},
+	{start: new Date(1982,10,22), group:2, content:'一通', type: 'point'},
+	{start: new Date(1989,01,03), group:2, content:'二通', type: 'point'},
+	{start: new Date(1997,08,01), group:2, content:'三通', type: 'point'},
+	{start: new Date(2005,06,11), group:2, content:'四通', type: 'point'},
+	
+	{start: new Date(1935,00,24), group:3, content:'斗南市區計畫', type: 'point'},
+	{start: new Date(1965,02,16), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1985,01,13), group:3, content:'一通', type: 'point'},
+	{start: new Date(1998,11,08), group:3, content:'二通', type: 'point'},
+	
+	{start: new Date(1937,01,07), group:4, content:'西螺都市計畫', type: 'point'},
+	{start: new Date(1955,05,15), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1987,05,09), group:4, content:'擴大', type: 'point'},
+	{start: new Date(1995,01,07), group:4, content:'一通', type: 'point'},
+	{start: new Date(2005,11,29), group:4, content:'二通', type: 'point'},
+	{start: new Date(2011,04,19), group:4, content:'三通', type: 'point'},
+	
+	{start: new Date(1941,06,18), group:5, content:'虎尾都市計畫', type: 'point'},
+	{start: new Date(1971,02,31), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1979,03,12), group:5, content:'通檢', type: 'point'},
+	{start: new Date(1999,01,26), group:5, content:'一通', type: 'point'},
+	
+	{start: new Date(1972,01,01), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1986,09,08), group:6, content:'一通', type: 'point'},
+	{start: new Date(1998,06,07), group:6, content:'二通', type: 'point'},
+	{start: new Date(2015,00,23), group:6, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,05,30), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1985,05,29), group:7, content:'一通', type: 'point'},
+	{start: new Date(1995,04,06), group:7, content:'二通', type: 'point'},
+	{start: new Date(2008,01,21), group:7, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,08,30), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1985,01,02), group:8, content:'一通', type: 'point'},
+	{start: new Date(2003,08,04), group:8, content:'二通', type: 'point'},
+
+	{start: new Date(1972,11,30), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1985,04,09), group:9, content:'一通', type: 'point'},
+	{start: new Date(1998,02,02), group:9, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,03,20), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1992,02,18), group:10, content:'一通', type: 'point'},
+	{start: new Date(2006,07,29), group:10, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,04,20), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1976,01,22), group:11, content:'一通', type: 'point'},
+	{start: new Date(1992,08,11), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,11,10), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1983,01,01), group:12, content:'一通', type: 'point'},
+	{start: new Date(1991,11,30), group:12, content:'二通', type: 'point'},
+	{start: new Date(2001,06,25), group:12, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,03,20), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1986,00,29), group:13, content:'一通', type: 'point'},
+	{start: new Date(2003,00,02), group:13, content:'二通', type: 'point'},
+	
+	{start: new Date(1975,03,20), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1982,03,08), group:14, content:'一通', type: 'point'},
+	{start: new Date(1989,02,31), group:14, content:'二通', type: 'point'},
+	{start: new Date(1997,00,20), group:14, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,03,20), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1986,07,16), group:15, content:'一通', type: 'point'},
+	{start: new Date(2006,02,27), group:15, content:'二通', type: 'point'},
+	
+	{start: new Date(1975,05,10), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,20), group:16, content:'一通', type: 'point'},
+	{start: new Date(1997,06,28), group:16, content:'二通', type: 'point'},
+	{start: new Date(2015,06,22), group:16, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,11,30), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1983,03,01), group:17, content:'一通', type: 'point'},
+	{start: new Date(1990,00,23), group:17, content:'二通', type: 'point'},
+	{start: new Date(1997,01,20), group:17, content:'三通', type: 'point'},
+	{start: new Date(2016,04,17), group:17, content:'四通', type: 'point'},
+	
+	{start: new Date(1975,11,30), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1982,05,23), group:18, content:'一通', type: 'point'},
+	{start: new Date(1988,09,29), group:18, content:'二通', type: 'point'},
+	{start: new Date(1997,07,25), group:18, content:'三通', type: 'point'},
+	{start: new Date(2017,02,01), group:18, content:'四通', type: 'point'},
+	
+	{start: new Date(1985,04,03), group:19, content:'草嶺風景特定區主要計畫案', type: 'point'},
+	{start: new Date(2001,09,11), group:19, content:'草嶺都市計畫案、廢除風景區計畫', type: 'point'},
+	
+	{start: new Date(1977,07,30), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1985,03,04), group:20, content:'一通', type: 'point'},
+	{start: new Date(1993,02,11), group:20, content:'二通', type: 'point'},
+	{start: new Date(2003,07,25), group:20, content:'三通', type: 'point'},
+	
+	{start: new Date(1981,05,15), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1989,00,20), group:21, content:'一通', type: 'point'},
+	{start: new Date(2003,05,18), group:21, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,01,17), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1990,06,17), group:22, content:'一通', type: 'point'},
+	
+	{start: new Date(1980,10,25), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1989,11,13), group:23, content:'一通', type: 'point'},
+
+	{start: new Date(1983,05,21), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1991,09,15), group:24, content:'一通', type: 'point'},
+	{start: new Date(2007,01,07), group:24, content:'二通', type: 'point'},
+	
+	{start: new Date(2001,06,11), group:25, content:'擬定', type: 'point'},
+	
+	{start: new Date(2003,08,17), group:26, content:'擬定', type: 'point'},
+	{start: new Date(2013,09,18), group:26, content:'一通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_yl');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_cyc" style="padding-top:50px">
+  <h3>嘉義市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '嘉義市都市計畫', nestedGroups:[2,3,4,5,6,7,8,9,10]},
+	{id: 2, value: 3, content: '嘉義市中心地區(西北部分)都市計畫'},
+	{id: 3, value: 4, content: '嘉義市蘭潭地區都市計畫'},
+	{id: 4, value: 5, content: '嘉義市後湖地區都市計畫'},
+	{id: 5, value: 6, content: '嘉義市湖子內都市計畫'},
+	{id: 6, value: 7, content: '嘉義市盧厝地區都市計畫'},
+	{id: 7, value: 8, content: '嘉義市劉厝地區都市計畫'},
+	{id: 8, value: 9, content: '嘉義市興村地區都市計畫'},
+	{id: 9, value:10, content: '嘉義市北社尾地區都市計畫'},
+	{id:10, value:11, content: '嘉義市中心地區都市計畫'},
+	{id:11, value:12, content: '高速公路嘉義交流道附近特定區計畫'},
+	{id:12, value:13, content: '仁義潭風景特定區計畫'},	
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(2004,08,30), group:1, content:'嘉義市都市計畫通檢(合併九處)', type: 'point'},
+	{start: new Date(2014,05,09), group:1, content:'二通', type: 'point'},
+	
+	{start: new Date(1906,03,26), group:2, content:'嘉義市區改正', type: 'point'},
+	{start: new Date(1913,00,19), group:2, content:'嘉義街市區改正', type: 'point'},
+	{start: new Date(1921,00,01), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1943,00,01), group:2, content:'嘉義都市計畫', type: 'point'},
+	{start: new Date(1949,09,29), group:2, content:'嘉義市主要計畫', type: 'point'},
+	{start: new Date(1975,05,10), group:2, content:'市中心地區(西北部分)一通', type: 'point'},
+	{start: new Date(1985,06,04), group:2, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,09,09), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1984,04,05), group:3, content:'一通', type: 'point'},
+	{start: new Date(1993,01,09), group:3, content:'二通', type: 'point'},
+	
+	{start: new Date(1979,03,02), group:4, content:'一通', type: 'point'},
+	
+	{start: new Date(1979,03,02), group:5, content:'一通', type: 'point'},
+	
+	{start: new Date(1982,05,05), group:6, content:'一通', type: 'point'},
+	{start: new Date(1989,11,09), group:6, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,05,05), group:7, content:'一通', type: 'point'},
+	{start: new Date(1989,08,27), group:7, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,05,05), group:8, content:'一通', type: 'point'},
+	{start: new Date(1989,07,22), group:8, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,05,05), group:9, content:'一通', type: 'point'},
+	{start: new Date(1989,11,09), group:9, content:'二通', type: 'point'},
+
+	{start: new Date(1984,09,19), group:10, content:'一通', type: 'point'},
+	
+	{start: new Date(1977,09,22), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1985,02,20), group:11, content:'一通', type: 'point'},
+	{start: new Date(2003,02,24), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,05,23), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1990,02,02), group:12, content:'一通', type: 'point'},
+	{start: new Date(2001,03,23), group:12, content:'二通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_cyc');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_cy" style="padding-top:50px">
+  <h3>嘉義縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 2, value: 3, content: '朴子都市計畫'},
+	{id: 3, value: 4, content: '梅山都市計畫'},
+	{id: 4, value: 5, content: '大林都市計畫'},
+	{id: 5, value: 6, content: '布袋都市計畫'},
+	{id: 6, value: 7, content: '民雄都市計畫'},
+	{id: 7, value: 8, content: '水上都市計畫'},
+	{id: 8, value: 9, content: '新港都市計畫'},
+	{id: 9, value:10, content: '中埔都市計畫'},
+	{id:10, value:11, content: '竹崎都市計畫'},
+	{id:11, value:12, content: '大埔都市計畫'},
+	{id:12, value:13, content: '義竹都市計畫'},
+	{id:13, value:14, content: '溪口都市計畫'},
+	{id:14, value:15, content: '高速公路嘉義交流道附近特定區計畫'},
+	{id:15, value:16, content: '曾文水庫特定區計畫'},
+	{id:16, value:17, content: '阿里山(達邦地區)計畫'},
+	{id:17, value:18, content: '水上(北回地區)'},
+	{id:18, value:19, content: '仁義潭風景區特定區計畫'},
+	{id:19, value:20, content: '吳鳳廟特定區計畫'},
+	{id:20, value:21, content: '太保都市計畫'},
+	{id:21, value:22, content: '中崙風景特定區計畫'},
+	{id:22, value:23, content: '中埔(和睦地區)都市計畫'},
+	{id:23, value:24, content: '民雄(頭橋地區)都市計畫'},
+	{id:24, value:25, content: '嘉義縣治都市計畫', nestedGroups:[25,26]},	
+	{id:25, value:26, content: '嘉義縣治所在地計畫'},
+	{id:26, value:27, content: '擴大嘉義縣治所在地計畫'},
+	{id:27, value:28, content: '六腳(蒜頭地區)都市計畫'},
+	{id:28, value:29, content: '鹿草都市計畫'},
+	{id:29, value:30, content: '國立中正大學特定區主要計畫'},
+	{id:30, value:31, content: '高速鐵路嘉義車站特定區計畫'},	
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1916,10,01), group:2, content:'樸仔腳街市區計劃', type: 'point'},
+	{start: new Date(1955,08,21), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1979,10,15), group:2, content:'一通', type: 'point'},
+	{start: new Date(1986,04,08), group:2, content:'二通', type: 'point'},
+	{start: new Date(2009,08,25), group:2, content:'三通', type: 'point'},
+
+	{start: new Date(1958,08,16), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1982,09,21), group:3, content:'一通', type: 'point'},
+	{start: new Date(1989,08,16), group:3, content:'二通', type: 'point'},
+	{start: new Date(2003,08,15), group:3, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,00,07), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1980,06,08), group:4, content:'一通', type: 'point'},
+	{start: new Date(1992,03,10), group:4, content:'二通', type: 'point'},
+	{start: new Date(2002,03,01), group:4, content:'三通', type: 'point'},
+	{start: new Date(2016,11,22), group:4, content:'四通', type: 'point'},
+	
+	{start: new Date(1972,01,26), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1983,09,22), group:5, content:'擴大', type: 'point'},
+	{start: new Date(1987,05,04), group:5, content:'一通', type: 'point'},
+	{start: new Date(1991,08,30), group:5, content:'二通', type: 'point'},
+	{start: new Date(2002,09,03), group:5, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,10,15), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1983,08,20), group:6, content:'一通', type: 'point'},
+	{start: new Date(1990,10,08), group:6, content:'二通', type: 'point'},
+	{start: new Date(2007,02,02), group:6, content:'三通', type: 'point'},
+	{start: new Date(2012,11,11), group:6, content:'四通', type: 'point'},
+	
+	{start: new Date(1972,11,16), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1982,08,25), group:7, content:'一通', type: 'point'},
+	{start: new Date(1990,03,16), group:7, content:'二通', type: 'point'},
+	{start: new Date(2003,06,02), group:7, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,01,23), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1982,09,01), group:8, content:'一通', type: 'point'},
+	{start: new Date(1990,09,26), group:8, content:'二通', type: 'point'},
+	{start: new Date(2004,06,07), group:8, content:'三通', type: 'point'},
+	{start: new Date(2010,06,14), group:8, content:'四通', type: 'point'},
+	
+	{start: new Date(1974,03,11), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1984,03,16), group:9, content:'一通', type: 'point'},
+	{start: new Date(1991,10,05), group:9, content:'二通', type: 'point'},
+	{start: new Date(2002,11,04), group:9, content:'三通', type: 'point'},
+	{start: new Date(2016,00,20), group:9, content:'四通暨莫拉克重建(一階)', type: 'point'},
+	
+	{start: new Date(1974,08,06), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1983,06,08), group:10, content:'一通', type: 'point'},
+	{start: new Date(1999,02,06), group:10, content:'二通', type: 'point'},
+	{start: new Date(2012,11,05), group:10, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,08,20), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1982,05,29), group:11, content:'一通', type: 'point'},
+	{start: new Date(2012,04,16), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,11,18), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1983,00,12), group:12, content:'一通', type: 'point'},
+	{start: new Date(1990,10,13), group:12, content:'二通', type: 'point'},
+	{start: new Date(2002,01,07), group:12, content:'三通', type: 'point'},
+	{start: new Date(2015,07,07), group:12, content:'四通', type: 'point'},
+	
+	{start: new Date(1975,01,24), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,13), group:13, content:'一通', type: 'point'},
+	{start: new Date(1991,02,21), group:13, content:'二通', type: 'point'},
+	{start: new Date(2002,04,07), group:13, content:'三通', type: 'point'},
+	{start: new Date(2015,05,08), group:13, content:'四通', type: 'point'},
+	
+	{start: new Date(1977,09,22), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1985,02,20), group:14, content:'一通', type: 'point'},
+	{start: new Date(2003,02,24), group:14, content:'二通(嘉義縣部分)', type: 'point'},
+	
+	{start: new Date(1978,00,17), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,10), group:15, content:'一通', type: 'point'},
+	{start: new Date(1998,04,12), group:15, content:'二通', type: 'point'},
+	{start: new Date(2012,06,16), group:15, content:'三通', type: 'point'},
+	
+	{start: new Date(1982,03,09), group:16, content:'擬定吳鳳(達邦地區)都市計畫', type: 'point'},
+	{start: new Date(1990,00,18), group:16, content:'一通(更名為阿里山)', type: 'point'},
+	{start: new Date(2012,01,15), group:16, content:'二通暨莫拉克重建', type: 'point'},
+		
+	{start: new Date(1982,05,05), group:17, content:'擬定嘉義(劉厝地區)都市計畫', type: 'point'},
+	{start: new Date(1989,10,28), group:17, content:'一通(水上鄉部分)', type: 'point'},
+	{start: new Date(1998,05,26), group:17, content:'二通(更名為水上(北回地區))', type: 'point'},
+	
+	{start: new Date(1982,05,23), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1988,07,19), group:18, content:'一通(嘉市)', type: 'point'},
+	{start: new Date(1990,02,06), group:18, content:'一通(嘉縣)', type: 'point'},
+	{start: new Date(2001,03,23), group:18, content:'二通', type: 'point'},
+	{start: new Date(2009,09,07), group:18, content:'三通', type: 'point'},
+	
+	{start: new Date(1982,10,19), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1990,03,11), group:19, content:'一通', type: 'point'},
+	{start: new Date(2000,02,24), group:19, content:'二通', type: 'point'},
+	{start: new Date(2010,03,15), group:19, content:'三通', type: 'point'},
+	
+	{start: new Date(1984,11,10), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1991,03,09), group:20, content:'一通', type: 'point'},
+	{start: new Date(2004,04,17), group:20, content:'二通', type: 'point'},
+	
+	{start: new Date(1985,00,10), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1990,05,21), group:21, content:'一通', type: 'point'},
+	{start: new Date(2001,09,26), group:21, content:'二通', type: 'point'},
+	{start: new Date(2007,10,09), group:21, content:'三通', type: 'point'},
+	{start: new Date(2016,04,25), group:21, content:'四通暨莫拉克重建', type: 'point'},
+	
+	{start: new Date(1985,00,11), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1994,04,12), group:22, content:'一通', type: 'point'},
+	{start: new Date(2011,07,10), group:22, content:'二通', type: 'point'},
+	{start: new Date(2016,00,25), group:22, content:'二通(二階)', type: 'point'},
+	
+	{start: new Date(1985,01,09), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1997,07,14), group:23, content:'一通', type: 'point'},
+	{start: new Date(2007,01,26), group:23, content:'二通(一階)', type: 'point'},
+	
+	{start: new Date(2015,10,27), group:24, content:'一通(一階)', type: 'point'},
+	
+	{start: new Date(1985,09,23), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1992,09,09), group:25, content:'一通', type: 'point'},
+	{start: new Date(2000,05,15), group:25, content:'二通', type: 'point'},
+	
+	{start: new Date(1998,07,21), group:26, content:'擬定', type: 'point'},
+
+	{start: new Date(1987,10,14), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1993,02,11), group:27, content:'一通', type: 'point'},
+	{start: new Date(2004,00,27), group:27, content:'二通', type: 'point'},
+	
+	{start: new Date(1992,03,02), group:28, content:'擬定', type: 'point'},
+	{start: new Date(2003,01,25), group:28, content:'一通', type: 'point'},
+
+	{start: new Date(1992,10,20), group:29, content:'擬定', type: 'point'},
+	{start: new Date(2004,02,30), group:29, content:'一通', type: 'point'},
+	{start: new Date(2014,00,09), group:29, content:'二通', type: 'point'},
+	
+	{start: new Date(1999,08,30), group:30, content:'擬定', type: 'point'},
+	{start: new Date(2014,04,21), group:30, content:'一通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_cy');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_tn" style="padding-top:50px">
+  <h3>台南市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '台南市都市計畫', nestedGroups:[2,3,4,5,6,7]},
+	{id: 2, value: 3, content: '東區都市計畫'},
+	{id: 3, value: 4, content: '中西區都市計畫'},
+	{id: 4, value: 5, content: '安平區都市計畫'},
+	{id: 5, value: 6, content: '北區都市計畫'},
+	{id: 6, value: 7, content: '安南區都市計畫'},
+	{id: 7, value: 8, content: '南區都市計畫'},
+	{id: 8, value: 9, content: '高速公路麻豆交流道附近特定區計畫', nestedGroups:[9]},
+	{id: 9, value:10, content: '麻豆都市計畫'},
+	{id:10, value:11, content: '鹽水都市計畫'},
+	{id:11, value:12, content: '新營都市計畫'},
+	{id:12, value:13, content: '佳里都市計畫'},
+	{id:13, value:14, content: '學甲都市計畫'},
+	{id:14, value:15, content: '善化都市計畫'},
+	{id:15, value:16, content: '白河都市計畫'},
+	{id:16, value:17, content: '新化都市計畫'},
+	{id:17, value:18, content: '關廟都市計畫'},
+	{id:18, value:19, content: '玉井都市計畫'},
+	{id:19, value:20, content: '楠西都市計畫'},
+	{id:20, value:21, content: '下營都市計畫'},
+	{id:21, value:22, content: '後壁都市計畫'},
+	{id:22, value:23, content: '六甲都市計畫'},
+	{id:23, value:24, content: '東山都市計畫'},
+	{id:24, value:25, content: '柳營都市計畫'},
+	{id:25, value:26, content: '歸仁都市計畫'},
+	{id:26, value:27, content: '將軍漚汪地區都市計畫'},
+	{id:27, value:28, content: '官田(含隆田地區)都市計畫', nestedGroups:[28]},
+	{id:28, value:29, content: '官田都市計畫'},
+	{id:29, value:30, content: '西港都市計畫'},
+	{id:30, value:31, content: '仁德都市計畫'},
+	{id:31, value:32, content: '新市都市計畫'},
+	{id:32, value:33, content: '山上都市計畫'},
+	{id:33, value:34, content: '安定都市計畫'},
+	{id:34, value:35, content: '大內都市計畫'},
+	{id:35, value:36, content: '高速公路新營交流道附近特定區計畫'},
+	{id:36, value:37, content: '高速公路台南交流道附近特定區計畫'},
+	{id:37, value:38, content: '曾文水庫特定區計畫'},
+	{id:38, value:39, content: '高速公路永康交流道附近特定區計畫'},
+	{id:39, value:40, content: '永康六甲頂都市計畫', nestedGroups:[40,41]},
+	{id:40, value:41, content: '六甲頂都市計畫(四分子地區)'},
+	{id:41, value:42, content: '六甲頂市地重畫區'},
+	{id:42, value:43, content: '仁德(文賢地區)都市計畫'},
+	{id:43, value:44, content: '關子嶺(含枕頭山附近地區)特定區計畫', nestedGroups:[44]},
+	{id:44, value:45, content: '關子嶺(枕頭山附近地區)特定區計畫'},
+	{id:45, value:46, content: '南鯤鯓特定區計畫'},
+	{id:46, value:47, content: '虎頭埤特定區計畫'},
+	{id:47, value:48, content: '烏山頭水庫風景特定區計畫'},
+	{id:48, value:49, content: '高速鐵路台南車站特定區計畫'},
+	{id:49, value:50, content: '臺南科學工業園區特定區計畫'},
+	{id:50, value:51, content: '台南都會公園特定區計畫'},
+	{id:51, value:52, content: '安平港歷史風貌園區特定區計畫'},
+	{id:52, value:53, content: '北門都市計畫'},
+	{id:53, value:54, content: '七股都市計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2010,11,25), group:0, content:'台南市升格', className:'event'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1911,06,23), group:1, content:'台南市街市區計畫', type: 'point'},
+	{start: new Date(1929,04,25), group:1, content:'台南市區擴張計畫', type: 'point'},
+	{start: new Date(1941,06,18), group:1, content:'台南都市計畫', type: 'point'},
+	{start: new Date(1949,11,30), group:1, content:'台南市都市計畫', type: 'point'},
+	{start: new Date(1979,09,23), group:1, content:'擴大台南市主要計畫', type: 'point'},
+	{start: new Date(1983,09,05), group:1, content:'通檢', type: 'point'},
+	{start: new Date(1996,05,14), group:1, content:'三通', type: 'point'},
+	{start: new Date(2003,00,16), group:1, content:'四通', type: 'point'},
+	{start: new Date(2016,04,06), group:1, content:'五通(內政部審核)', type: 'point'},
+	
+	{start: new Date(2005,11,26), group:2, content:'東區都市計畫(主要計畫)(通檢)', type: 'point'},
+	
+	{start: new Date(2009,10,14), group:3, content:'中西區都市計畫(主要計畫)(通檢)', type: 'point'},
+	
+	{start: new Date(2010,04,20), group:4, content:'安平區都市計畫(主要計畫)(通檢)', type: 'point'},
+		
+	{start: new Date(2010,05,29), group:5, content:'北區都市計畫(主要計畫)(通檢)', type: 'point'},
+	
+	{start: new Date(2011,07,25), group:6, content:'安南區都市計畫(主要計畫)(通檢)', type: 'point'},
+	{start: new Date(2013,09,03), group:6, content:'通檢(二階)', type: 'point'},
+		
+	{start: new Date(2012,10,19), group:7, content:'南區都市計畫(主要計畫)(通檢)', type: 'point'},
+	
+	{start: new Date(1977,05,02), group:8, content:'高速公路麻豆交流道附近特定區計畫', type: 'point'},
+	{start: new Date(1985,09,24), group:8, content:'一通', type: 'point'},
+	{start: new Date(1995,04,16), group:8, content:'合併暨二通', type: 'point'},
+	{start: new Date(2004,07,31), group:8, content:'三通(一階)', type: 'point'},
+	{start: new Date(2008,03,16), group:8, content:'三通(二階)', type: 'point'},
+	{start: new Date(2008,09,03), group:8, content:'三通(三階)', type: 'point'},
+
+	{start: new Date(1931,00,30), group:9, content:'麻豆街市區計畫', type: 'point'},
+	{start: new Date(1967,00,24), group:9, content:'麻豆都市計畫', type: 'point'},
+	{start: new Date(1982,10,22), group:9, content:'一通', type: 'point'},
+		
+	{start: new Date(1937,05,13), group:10, content:'鹽水都市計畫', type: 'point'},
+	{start: new Date(1956,02,01), group:10, content:'重修', type: 'point'},
+	{start: new Date(1970,10,10), group:10, content:'擴大', type: 'point'},
+	{start: new Date(1986,10,28), group:10, content:'一通', type: 'point'},
+	{start: new Date(2002,09,01), group:10, content:'二通', type: 'point'},
+	{start: new Date(2014,06,15), group:10, content:'三通(內政部通過)', type: 'point'},
+		
+	{start: new Date(1937,05,13), group:11, content:'新營都市計畫', type: 'point'},
+	{start: new Date(1956,10,03), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1967,01,01), group:11, content:'擴大', type: 'point'},
+	{start: new Date(1976,10,03), group:11, content:'一通', type: 'point'},
+	{start: new Date(2005,07,16), group:11, content:'二通', type: 'point'},
+	{start: new Date(2014,02,24), group:11, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1937,05,13), group:12, content:'佳里都市計畫', type: 'point'},
+	{start: new Date(1957,02,05), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1981,10,06), group:12, content:'一通', type: 'point'},
+	{start: new Date(1988,02,07), group:12, content:'二通', type: 'point'},
+	{start: new Date(1999,05,03), group:12, content:'三通', type: 'point'},
+	{start: new Date(2014,07,01), group:12, content:'四通(一階)', type: 'point'},
+	{start: new Date(2015,00,08), group:12, content:'四通(二階)', type: 'point'},
+	
+	{start: new Date(1937,05,13), group:13, content:'學甲都市計畫', type: 'point'},
+	{start: new Date(1956,03,20), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1981,09,21), group:13, content:'擴大', type: 'point'},
+	{start: new Date(1988,09,17), group:13, content:'一通', type: 'point'},
+	{start: new Date(1999,07,30), group:13, content:'二通', type: 'point'},
+	{start: new Date(2015,08,29), group:13, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1943,01,14), group:14, content:'善化都市計畫', type: 'point'},
+	{start: new Date(1956,10,06), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1982,06,15), group:14, content:'擴大暨一通', type: 'point'},
+	{start: new Date(1993,05,12), group:14, content:'二通', type: 'point'},
+	{start: new Date(2006,01,17), group:14, content:'三通', type: 'point'},
+	{start: new Date(2016,05,01), group:14, content:'四通(草案)', type: 'point'},
+	
+	{start: new Date(1943,01,14), group:15, content:'白河都市計畫', type: 'point'},
+	{start: new Date(1956,02,05), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1979,11,01), group:15, content:'擴大', type: 'point'},
+	{start: new Date(1999,05,03), group:15, content:'一通', type: 'point'},
+	{start: new Date(2015,08,29), group:15, content:'二通', type: 'point'},
+		
+	{start: new Date(1971,03,20), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1986,08,30), group:16, content:'一通', type: 'point'},
+	{start: new Date(2007,07,10), group:16, content:'二通', type: 'point'},
+	{start: new Date(2016,06,07), group:16, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1972,01,01), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1980,09,03), group:17, content:'一通', type: 'point'},
+	{start: new Date(1989,02,15), group:17, content:'二通', type: 'point'},
+	{start: new Date(2002,02,01), group:17, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,03,20), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1977,03,22), group:18, content:'一通', type: 'point'},
+	{start: new Date(1984,07,27), group:18, content:'二通', type: 'point'},
+	{start: new Date(2003,03,17), group:18, content:'三通', type: 'point'},
+	{start: new Date(2016,05,06), group:18, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1972,03,20), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1984,05,19), group:19, content:'一通', type: 'point'},
+	{start: new Date(1993,02,09), group:19, content:'二通', type: 'point'},
+	{start: new Date(2004,04,13), group:19, content:'三通', type: 'point'},
+	{start: new Date(2017,02,28), group:19, content:'四通(一階)', type: 'point'},
+	
+	{start: new Date(1972,08,11), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1982,07,21), group:20, content:'一通', type: 'point'},
+	{start: new Date(2000,04,10), group:20, content:'二通', type: 'point'},
+	{start: new Date(2005,08,30), group:20, content:'三通', type: 'point'},
+	{start: new Date(2017,04,25), group:20, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1972,10,15), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1983,03,20), group:21, content:'一通', type: 'point'},
+	{start: new Date(1990,10,20), group:21, content:'一通', type: 'point'},
+	
+	{start: new Date(1973,00,10), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1983,05,25), group:22, content:'一通', type: 'point'},
+	{start: new Date(1991,00,15), group:22, content:'二通', type: 'point'},
+	{start: new Date(2002,06,01), group:22, content:'三通', type: 'point'},
+	{start: new Date(2013,01,26), group:22, content:'四通(一階)', type: 'point'},
+	{start: new Date(2014,09,24), group:22, content:'四通(二階)', type: 'point'},
+	{start: new Date(2015,11,17), group:22, content:'四通(三階)', type: 'point'},
+	
+	{start: new Date(1973,00,10), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1980,06,19), group:23, content:'一通', type: 'point'},
+	{start: new Date(1997,08,24), group:23, content:'二通', type: 'point'},
+	{start: new Date(2015,10,27), group:23, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1973,07,15), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1984,02,28), group:24, content:'一通', type: 'point'},
+	{start: new Date(1997,07,25), group:24, content:'二通', type: 'point'},
+	{start: new Date(2016,04,24), group:24, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1974,06,06), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1982,08,30), group:25, content:'一通', type: 'point'},
+	{start: new Date(1994,03,18), group:25, content:'二通', type: 'point'},
+	{start: new Date(2005,06,28), group:25, content:'三通', type: 'point'},
+	{start: new Date(2015,06,22), group:25, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1975,04,10), group:26, content:'擬定', type: 'point'},
+	{start: new Date(1984,02,05), group:26, content:'一通', type: 'point'},
+	{start: new Date(1993,06,10), group:26, content:'二通', type: 'point'},
+	{start: new Date(2004,10,12), group:26, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,04,10), group:27, content:'官田鄉隆田地區都市計畫', type: 'point'},
+	{start: new Date(1982,10,22), group:27, content:'一通', type: 'point'},
+	{start: new Date(1989,07,04), group:27, content:'二通', type: 'point'},
+	{start: new Date(2001,08,24), group:27, content:'三通', type: 'point'},
+	{start: new Date(2015,11,08), group:27, content:'官田(含隆田地區)都市計畫(四通)(公展)', type: 'point'},
+	
+	{start: new Date(1978,03,15), group:28, content:'官田都市計畫', type: 'point'},
+	{start: new Date(1983,04,20), group:28, content:'一通', type: 'point'},
+	{start: new Date(1991,04,21), group:28, content:'二通', type: 'point'},
+	{start: new Date(2000,05,13), group:28, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,06,03), group:29, content:'擬定', type: 'point'},
+	{start: new Date(1983,11,21), group:29, content:'一通', type: 'point'},
+	{start: new Date(1989,03,15), group:29, content:'二通', type: 'point'},
+	{start: new Date(1998,02,20), group:29, content:'三通', type: 'point'},
+	{start: new Date(2006,10,07), group:29, content:'四通', type: 'point'},
+	
+	{start: new Date(1975,10,20), group:30, content:'擬定', type: 'point'},
+	{start: new Date(1992,04,07), group:30, content:'一通', type: 'point'},
+	{start: new Date(2010,06,17), group:30, content:'二通(一階)', type: 'point'},
+	{start: new Date(2011,05,22), group:30, content:'二通(二階)', type: 'point'},
+
+	{start: new Date(1976,01,21), group:31, content:'擬定', type: 'point'},
+	{start: new Date(1985,10,15), group:31, content:'一通', type: 'point'},
+	{start: new Date(2003,09,24), group:31, content:'二通', type: 'point'},
+	{start: new Date(2015,07,18), group:31, content:'三通(再公展)', type: 'point'},
+	
+	{start: new Date(1976,02,20), group:32, content:'擬定', type: 'point'},
+	{start: new Date(1984,03,25), group:32, content:'一通', type: 'point'},
+	{start: new Date(1993,04,18), group:32, content:'二通', type: 'point'},
+	{start: new Date(2001,05,12), group:32, content:'三通', type: 'point'},
+	{start: new Date(2016,04,23), group:32, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1976,02,20), group:33, content:'擬定', type: 'point'},
+	{start: new Date(1984,05,04), group:33, content:'一通', type: 'point'},
+	{start: new Date(1995,05,30), group:33, content:'二通', type: 'point'},
+	{start: new Date(2003,10,28), group:33, content:'三通', type: 'point'},
+	{start: new Date(2012,07,28), group:33, content:'四通', type: 'point'},
+	
+	{start: new Date(1976,07,25), group:34, content:'擬定', type: 'point'},
+	{start: new Date(1983,09,05), group:34, content:'一通', type: 'point'},
+	{start: new Date(1990,11,26), group:34, content:'二通', type: 'point'},
+	{start: new Date(1997,02,27), group:34, content:'三通', type: 'point'},
+	{start: new Date(2005,03,29), group:34, content:'四通', type: 'point'},
+	
+	{start: new Date(1977,05,02), group:35, content:'擬定', type: 'point'},
+	{start: new Date(1985,03,03), group:35, content:'一通', type: 'point'},
+	{start: new Date(1997,02,10), group:35, content:'二通', type: 'point'},
+	{start: new Date(2010,07,20), group:35, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1977,06,02), group:36, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,08), group:36, content:'一通', type: 'point'},
+	{start: new Date(2003,07,12), group:36, content:'二通', type: 'point'},
+	{start: new Date(2016,06,15), group:36, content:'三通暨莫拉克重建(公展)', type: 'point'},
+	
+	{start: new Date(1978,00,17), group:37, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,10), group:37, content:'一通', type: 'point'},
+	{start: new Date(1998,04,07), group:37, content:'二通', type: 'point'},
+	{start: new Date(2012,06,19), group:37, content:'三通', type: 'point'},
+	
+	{start: new Date(1978,06,21), group:38, content:'擬定', type: 'point'},
+	{start: new Date(1986,11,30), group:38, content:'一通', type: 'point'},
+	{start: new Date(1996,01,15), group:38, content:'二通', type: 'point'},
+	{start: new Date(2006,01,06), group:38, content:'三通(一階)', type: 'point'},
+	{start: new Date(2006,04,22), group:38, content:'三通(二階)', type: 'point'},
+	{start: new Date(2014,04,09), group:38, content:'四通(公展)', type: 'point'},
+	
+	{start: new Date(1979,11,14), group:39, content:'六甲頂都市計畫(六甲頂地區)', type: 'point'},
+	{start: new Date(1982,04,26), group:39, content:'一通', type: 'point'},
+	{start: new Date(1997,01,05), group:39, content:'二通', type: 'point'},
+	{start: new Date(2006,00,17), group:39, content:'三通', type: 'point'},
+	{start: new Date(2014,04,10), group:39, content:'合併一通', type: 'point'},
+	
+	{start: new Date(1978,09,05), group:40, content:'六甲頂都市計畫(四分子地區)', type: 'point'},
+	{start: new Date(1982,04,26), group:40, content:'一通', type: 'point'},
+	{start: new Date(1997,03,21), group:40, content:'二通', type: 'point'},
+	{start: new Date(2006,00,17), group:40, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,00,20), group:41, content:'六甲頂市地重劃區', type: 'point'},
+	{start: new Date(1977,05,14), group:41, content:'一通', type: 'point'},
+	{start: new Date(2001,11,26), group:41, content:'二通', type: 'point'},
+	
+	{start: new Date(1980,00,12), group:42, content:'擬定', type: 'point'},
+	{start: new Date(1990,02,05), group:42, content:'一通', type: 'point'},
+	{start: new Date(2001,07,24), group:42, content:'二通', type: 'point'},
+	{start: new Date(2015,05,25), group:42, content:'三通(一階)', type: 'point'},
+	{start: new Date(2017,02,08), group:42, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1981,00,23), group:43, content:'關子嶺特定區計畫', type: 'point'},
+	{start: new Date(1994,06,15), group:43, content:'一通', type: 'point'},
+	{start: new Date(2002,07,22), group:43, content:'合併二通', type: 'point'},
+	{start: new Date(2016,05,05), group:43, content:'三通(公展)', type: 'point'},
+
+	{start: new Date(1983,08,20), group:44, content:'關子嶺特定區(枕頭山附近地區)計畫', type: 'point'},
+	{start: new Date(1990,11,15), group:44, content:'一通', type: 'point'},
+	
+	{start: new Date(1981,04,06), group:45, content:'擬定', type: 'point'},
+	{start: new Date(1997,01,05), group:45, content:'一通', type: 'point'},
+	{start: new Date(2000,10,09), group:45, content:'二通', type: 'point'},
+	{start: new Date(2006,01,09), group:45, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1981,06,31), group:46, content:'擬定', type: 'point'},
+	{start: new Date(1996,02,26), group:46, content:'一通', type: 'point'},
+	{start: new Date(2012,08,26), group:46, content:'擴大暨二通', type: 'point'},
+	
+	{start: new Date(1987,03,23), group:47, content:'擬定', type: 'point'},
+	{start: new Date(2006,05,22), group:47, content:'一通', type: 'point'},
+
+	{start: new Date(1999,09,04), group:48, content:'擬定', type: 'point'},
+	
+	{start: new Date(2002,10,25), group:49, content:'擬定', type: 'point'},
+	{start: new Date(2007,09,09), group:49, content:'一通', type: 'point'},
+	{start: new Date(2014,01,27), group:49, content:'二通', type: 'point'},
+	
+	{start: new Date(2004,05,21), group:50, content:'擬定', type: 'point'},
+	{start: new Date(2013,06,16), group:50, content:'擴大暨一通', type: 'point'},
+	
+	{start: new Date(2006,02,09), group:51, content:'擬定', type: 'point'},
+	{start: new Date(2012,01,09), group:51, content:'一通', type: 'point'},
+	
+	{start: new Date(2015,05,11), group:52, content:'擬定(公展)', type: 'point'},
+	
+	{start: new Date(2017,02,01), group:53, content:'擬定(公展)', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_tn');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1937, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ks" style="padding-top:50px">
+  <h3>高雄市</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '高雄市都市計畫', nestedGroups:[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]},
+	{id: 2, value: 3, content: '原高雄市都市計畫'},
+	{id: 3, value: 4, content: '左營都市計畫'},
+	{id: 4, value: 5, content: '小港特定區計畫'},
+	{id: 5, value: 6, content: '臨海特定區計畫'},
+	{id: 6, value: 7, content: '灣子內凹子底都市計畫'},
+	{id: 7, value: 8, content: '多功能經貿園區特定區計畫'},
+	{id: 8, value: 9, content: '楠梓區都市計畫'},
+	{id: 9, value:10, content: '崗山仔地區都市計畫'},
+	{id:10, value:11, content: '大林蒲都市計畫'},
+	{id:11, value:12, content: '旗津中洲一帶都市計畫'},
+	{id:12, value:13, content: '二苓都市計畫'},
+	{id:13, value:14, content: '港墘地區都市計畫'},
+	{id:14, value:15, content: '大坪頂以東地區都市計畫'},
+	{id:15, value:16, content: '佛公地區都市計畫'},
+	{id:16, value:17, content: '大坪頂特定區計畫'},
+	{id:17, value:18, content: '高速公路五甲交流道附近特定區計畫'},
+	{id:18, value:19, content: '高坪特定區計畫'},
+	{id:19, value:20, content: '內惟埤文化園區特定區計畫'},
+	{id:20, value:21, content: '旗山都市計畫'},
+	{id:21, value:22, content: '鳳山都市計畫'},
+	{id:22, value:23, content: '岡山都市計畫'},
+	{id:23, value:24, content: '美濃都市計畫'},
+	{id:24, value:25, content: '澄清湖特定區計畫'},
+	{id:25, value:26, content: '大樹都市計畫'},
+	{id:26, value:27, content: '仁武都市計畫'},
+	{id:27, value:28, content: '大社都市計畫'},
+	{id:28, value:29, content: '大寮都市計畫'},
+	{id:29, value:30, content: '路竹都市計畫'},
+	{id:30, value:31, content: '阿蓮都市計畫'},
+	{id:31, value:32, content: '梓官都市計畫'},
+	{id:32, value:33, content: '燕巢都市計畫'},
+	{id:33, value:34, content: '湖內都市計畫'},
+	{id:34, value:35, content: '彌陀都市計畫'},
+	{id:35, value:36, content: '茄萣都市計畫'},
+	{id:36, value:37, content: '甲仙都市計畫'},
+	{id:37, value:38, content: '高速公路楠梓交流道特定區計畫(鳳山厝部分)'},
+	{id:38, value:39, content: '高速公路岡山交流道特定區計畫'},
+	{id:39, value:40, content: '高速公路楠梓交流道特定區計畫(仁武部分)'},
+	{id:40, value:41, content: '大坪頂以東地區都市計畫'},
+	{id:41, value:42, content: '大坪頂特定區計畫'},
+	{id:42, value:43, content: '興達港漁港特定區計畫'},
+	{id:43, value:44, content: '月世界風景特定區計畫'},
+	{id:44, value:45, content: '大樹(九曲堂地區)都市計畫'},
+	{id:45, value:46, content: '六龜彩蝶谷風景特定區計畫'},
+	{id:46, value:47, content: '美濃(中正湖)風景特定區計畫'},
+	{id:47, value:48, content: '蚵子寮近海漁業特定區計畫'},
+	{id:48, value:49, content: '湖內(大湖地區)都市計畫'},
+	{id:49, value:50, content: '鳥松(仁美地區)都市計畫'},
+	{id:50, value:51, content: '高雄新市鎮特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	{start: new Date(1979,06,01), group:0, content:'高雄市升格，小港區併入'},
+	{start: new Date(2010,11,25), group:0, content:'高雄市升格', className:'event'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(1982,11,30), group:1, content:'擴大及變更高雄市楠梓、左營、灣子內凹子底及原高雄市都市計畫地區主要計畫(通檢)', type: 'point'},
+	{start: new Date(1996,10,02), group:1, content:'高雄市都市計畫(通檢)', type: 'point'},
+	{start: new Date(2017,01,26), group:1, content:'擴大暨三通(公展)', type: 'point'},
+	
+	{start: new Date(1908,04,01), group:2, content:'打狗市區改正', type: 'point'},
+	{start: new Date(1921,03,13), group:2, content:'打狗市區計畫', type: 'point'},
+	{start: new Date(1937,07,27), group:2, content:'高雄都市計畫', type: 'point'},
+	{start: new Date(1955,04,19), group:2, content:'擬定', type: 'point'},
+		
+	{start: new Date(1969,03,30), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1972,08,01), group:3, content:'通檢', type: 'point'},
+	
+	{start: new Date(1970,08,01), group:4, content:'小港區計畫', type: 'point'},
+	{start: new Date(1986,01,06), group:4, content:'擴大及變更高雄市港墘、小港、五甲、二苓及大林蒲地區主要計畫(通檢)', type: 'point'},
+	
+	{start: new Date(1970,08,04), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1981,03,17), group:5, content:'通檢(高雄市部分)', type: 'point'},
+	{start: new Date(1988,04,20), group:5, content:'通檢', type: 'point'},
+	
+	{start: new Date(1971,08,20), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1975,04,08), group:6, content:'通檢(二階)', type: 'point'},
+		
+	{start: new Date(1972,02,27), group:7, content:'中島都市計畫', type: 'point'},
+	{start: new Date(1999,11,20), group:7, content:'多功能經貿園區特定區計畫', type: 'point'},
+	{start: new Date(2013,05,04), group:7, content:'一通', type: 'point'},
+	
+	{start: new Date(1972,03,10), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1976,10,27), group:8, content:'通檢', type: 'point'},
+
+	{start: new Date(1973,08,03), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1981,01,19), group:9, content:'通檢', type: 'point'},
+			
+	{start: new Date(1974,07,22), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1986,01,06), group:10, content:'擴大及變更高雄市港墘、小港、五甲、二苓及大林蒲地區主要計畫(通檢)', type: 'point'},
+		
+	{start: new Date(1974,10,25), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1982,02,24), group:11, content:'擴大暨通檢', type: 'point'},
+	
+	{start: new Date(1974,11,26), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1986,01,06), group:12, content:'擴大及變更高雄市港墘、小港、五甲、二苓及大林蒲地區主要計畫(通檢)', type: 'point'},
+	
+	{start: new Date(1978,04,01), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1986,01,06), group:13, content:'擴大及變更高雄市港墘、小港、五甲、二苓及大林蒲地區主要計畫(通檢)', type: 'point'},
+	
+	{start: new Date(1978,05,27), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1996,09,01), group:14, content:'二通', type: 'point'},
+
+	{start: new Date(1979,04,16), group:15, content:'擬定', type: 'point'},
+			
+	{start: new Date(1979,05,30), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1988,05,06), group:16, content:'通檢(高雄市部分)', type: 'point'},
+	{start: new Date(2003,01,12), group:16, content:'二通(高雄市部分)', type: 'point'},
+		
+	{start: new Date(1979,05,30), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1986,01,06), group:17, content:'擴大及變更高雄市港墘、小港、五甲、二苓及大林蒲地區主要計畫(通盤檢討)', type: 'point'},
+	{start: new Date(1991,07,16), group:17, content:'一通', type: 'point'},
+		
+	{start: new Date(1984,00,14), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1987,11,21), group:18, content:'一通', type: 'point'},
+	
+	{start: new Date(1992,07,17), group:19, content:'擬定', type: 'point'},
+	{start: new Date(2003,02,04), group:19, content:'通檢', type: 'point'},
+
+	{start: new Date(1938,01,20), group:20, content:'旗山都市計畫', type: 'point'},
+	{start: new Date(1955,04,07), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1979,10,22), group:20, content:'擴大', type: 'point'},
+	{start: new Date(1990,05,22), group:20, content:'一通', type: 'point'},
+	
+	{start: new Date(1938,01,26), group:21, content:'鳳山都市計畫', type: 'point'},
+	{start: new Date(1973,08,01), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1991,09,30), group:21, content:'一通', type: 'point'},
+	{start: new Date(2004,05,29), group:21, content:'二通', type: 'point'},
+
+	{start: new Date(1938,10,23), group:22, content:'岡山都市計畫', type: 'point'},
+	{start: new Date(1974,02,06), group:22, content:'擬定', type: 'point'},
+	{start: new Date(2003,00,10), group:22, content:'一通', type: 'point'},
+	{start: new Date(2014,02,24), group:22, content:'二通', type: 'point'},
+
+	{start: new Date(1968,06,01), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1995,11,27), group:23, content:'一通', type: 'point'},
+	{start: new Date(2013,06,26), group:23, content:'二通(一階)', type: 'point'},
+	{start: new Date(2015,04,21), group:23, content:'二通(二階)', type: 'point'},
+	
+	{start: new Date(1969,10,15), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1988,06,29), group:24, content:'一通', type: 'point'},
+	{start: new Date(1998,06,14), group:24, content:'二通', type: 'point'},
+	{start: new Date(2014,09,28), group:24, content:'三通(一階)', type: 'point'},
+	{start: new Date(2015,03,27), group:24, content:'三通(二階)', type: 'point'},
+
+	{start: new Date(1973,01,01), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1980,01,26), group:25, content:'一通', type: 'point'},
+	{start: new Date(1999,06,06), group:25, content:'二通', type: 'point'},
+
+	{start: new Date(1973,02,28), group:26, content:'擬定', type: 'point'},
+	{start: new Date(1979,08,03), group:26, content:'一通', type: 'point'},
+	{start: new Date(1986,01,27), group:26, content:'二通', type: 'point'},
+	{start: new Date(1993,04,21), group:26, content:'三通', type: 'point'},
+	{start: new Date(2013,11,18), group:26, content:'四通(一階)', type: 'point'},
+	{start: new Date(2015,07,14), group:26, content:'四通(二階)', type: 'point'},
+
+	{start: new Date(1973,08,27), group:27, content:'擬定', type: 'point'},
+	{start: new Date(1979,11,03), group:27, content:'一通', type: 'point'},
+	{start: new Date(1986,04,14), group:27, content:'二通', type: 'point'},
+	{start: new Date(1998,10,07), group:27, content:'三通', type: 'point'},
+	{start: new Date(2014,11,03), group:27, content:'四通', type: 'point'},
+	
+	{start: new Date(1974,07,26), group:28, content:'擬定', type: 'point'},
+	{start: new Date(1984,07,20), group:28, content:'一通', type: 'point'},
+	{start: new Date(1997,09,24), group:28, content:'二通', type: 'point'},
+	{start: new Date(2014,00,13), group:28, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,11,30), group:29, content:'擬定', type: 'point'},
+	{start: new Date(1987,08,15), group:29, content:'一通', type: 'point'},
+	{start: new Date(2007,02,09), group:29, content:'二通', type: 'point'},
+		
+	{start: new Date(1975,08,01), group:30, content:'擬定', type: 'point'},
+	{start: new Date(1985,05,12), group:30, content:'一通', type: 'point'},
+	{start: new Date(1993,06,24), group:30, content:'二通', type: 'point'},
+	{start: new Date(2004,09,19), group:30, content:'三通', type: 'point'},
+
+	{start: new Date(1975,08,19), group:31, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,03), group:31, content:'一通', type: 'point'},
+	{start: new Date(1991,00,19), group:31, content:'二通', type: 'point'},
+	{start: new Date(2016,04,02), group:31, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1976,01,05), group:32, content:'擬定', type: 'point'},
+	{start: new Date(1987,07,15), group:32, content:'一通', type: 'point'},
+	{start: new Date(1995,05,30), group:32, content:'二通', type: 'point'},
+	{start: new Date(2005,05,01), group:32, content:'三通', type: 'point'},
+	
+	{start: new Date(1976,03,06), group:33, content:'擬定', type: 'point'},
+	{start: new Date(1985,10,25), group:33, content:'一通', type: 'point'},
+	{start: new Date(1991,03,25), group:33, content:'二通', type: 'point'},
+	{start: new Date(2004,10,18), group:33, content:'三通', type: 'point'},
+		
+	{start: new Date(1976,11,30), group:34, content:'擬定', type: 'point'},
+	{start: new Date(1985,10,15), group:34, content:'一通', type: 'point'},
+	{start: new Date(1991,11,14), group:34, content:'二通', type: 'point'},
+	{start: new Date(2004,11,17), group:34, content:'三通', type: 'point'},
+	
+	{start: new Date(1977,03,28), group:35, content:'擬定', type: 'point'},
+	{start: new Date(1987,00,10), group:35, content:'一通', type: 'point'},
+	{start: new Date(1996,05,24), group:35, content:'二通', type: 'point'},
+	{start: new Date(2006,02,12), group:35, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1977,04,03), group:36, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,02), group:36, content:'一通', type: 'point'},
+	{start: new Date(1989,01,22), group:36, content:'二通', type: 'point'},
+	{start: new Date(1998,02,04), group:36, content:'三通', type: 'point'},
+	
+	{start: new Date(1977,06,29), group:37, content:'擬定', type: 'point'},
+	{start: new Date(1985,08,03), group:37, content:'一通', type: 'point'},
+	{start: new Date(1998,02,16), group:37, content:'二通', type: 'point'},
+	{start: new Date(2014,11,10), group:37, content:'三通(一階)', type: 'point'},
+	{start: new Date(2016,04,26), group:37, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1977,06,29), group:38, content:'擬定', type: 'point'},
+	{start: new Date(1986,05,05), group:38, content:'一通', type: 'point'},
+	{start: new Date(1999,06,12), group:38, content:'二通', type: 'point'},
+	
+	{start: new Date(1978,04,01), group:39, content:'擬定', type: 'point'},
+	{start: new Date(1987,11,05), group:39, content:'一通', type: 'point'},
+	{start: new Date(1997,03,01), group:39, content:'二通', type: 'point'},
+	{start: new Date(2008,01,14), group:39, content:'三通', type: 'point'},
+
+	{start: new Date(1978,05,27), group:40, content:'擬定', type: 'point'},
+	{start: new Date(1989,10,27), group:40, content:'一通(台灣省部分)', type: 'point'},
+	{start: new Date(1996,09,01), group:40, content:'二通', type: 'point'},
+
+	{start: new Date(1979,05,30), group:41, content:'擬定', type: 'point'},
+	{start: new Date(1988,05,06), group:41, content:'通檢(高雄市部分)', type: 'point'},
+	{start: new Date(1988,06,29), group:41, content:'一通', type: 'point'},
+	{start: new Date(2003,01,12), group:41, content:'二通(高雄市部分)', type: 'point'},
+	{start: new Date(2003,09,28), group:41, content:'二通(台灣省部分)', type: 'point'},
+	
+	{start: new Date(1980,11,05), group:42, content:'擬定', type: 'point'},
+	{start: new Date(1987,09,23), group:42, content:'一通', type: 'point'},
+	{start: new Date(1998,11,14), group:42, content:'擴大暨二通', type: 'point'},
+	{start: new Date(2015,10,24), group:42, content:'三通(內政部都委會通過)', type: 'point'},
+
+	{start: new Date(1982,08,01), group:43, content:'擬定', type: 'point'},
+	{start: new Date(2004,03,02), group:43, content:'一通', type: 'point'},
+	{start: new Date(2014,09,20), group:43, content:'二通', type: 'point'},
+	
+	{start: new Date(1982,10,16), group:44, content:'擬定', type: 'point'},
+	{start: new Date(1998,10,10), group:44, content:'一通', type: 'point'},
+	
+	{start: new Date(1982,11,28), group:45, content:'擬定', type: 'point'},
+	{start: new Date(1991,11,20), group:45, content:'一通', type: 'point'},
+	{start: new Date(2006,02,31), group:45, content:'二通', type: 'point'},
+	{start: new Date(2014,11,04), group:45, content:'三通', type: 'point'},
+	
+	{start: new Date(1984,00,10), group:46, content:'擬定', type: 'point'},
+	{start: new Date(1993,04,08), group:46, content:'一通', type: 'point'},
+	{start: new Date(1993,04,08), group:46, content:'擴大暨二通', type: 'point'},
+
+	{start: new Date(1986,02,12), group:47, content:'擬定', type: 'point'},
+	{start: new Date(1993,11,18), group:47, content:'一通', type: 'point'},
+	{start: new Date(2001,04,09), group:47, content:'二通', type: 'point'},
+	{start: new Date(2013,07,12), group:47, content:'三通', type: 'point'},
+	
+	{start: new Date(1987,05,15), group:48, content:'擬定', type: 'point'},
+	{start: new Date(1991,09,24), group:48, content:'一通', type: 'point'},
+	{start: new Date(2003,09,29), group:48, content:'二通', type: 'point'},
+	
+	{start: new Date(1987,08,08), group:49, content:'擬定', type: 'point'},
+	{start: new Date(2001,04,18), group:49, content:'一通', type: 'point'},
+	{start: new Date(2013,01,19), group:49, content:'二通(一階)', type: 'point'},
+	{start: new Date(2015,07,10), group:49, content:'二通(二階)', type: 'point'},
+	{start: new Date(2015,09,01), group:49, content:'二通(三階)', type: 'point'},
+	
+	{start: new Date(1994,01,03), group:50, content:'擬定', type: 'point'},
+	{start: new Date(1990,01,05), group:50, content:'一通', type: 'point'},
+	{start: new Date(2013,00,25), group:50, content:'二通(一階)', type: 'point'},
+	{start: new Date(2014,02,10), group:50, content:'二通(二階)', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_ks');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1937, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_pt" style="padding-top:50px">
+  <h3>屏東縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '屏東都市計畫'},
+	{id: 2, value: 3, content: '東港都市計畫'},
+	{id: 3, value: 4, content: '恆春都市計畫'},
+	{id: 4, value: 5, content: '內埔都市計畫'},
+	{id: 5, value: 6, content: '潮州都市計畫'},
+	{id: 6, value: 7, content: '長治都市計畫'},
+	{id: 7, value: 8, content: '九如都市計畫'},
+	{id: 8, value: 9, content: '里港都市計畫'},
+	{id: 9, value:10, content: '萬丹都市計畫'},
+	{id:10, value:11, content: '麟洛都市計畫'},
+	{id:11, value:12, content: '鹽埔都市計畫'},
+	{id:12, value:13, content: '佳冬都市計畫'},
+	{id:13, value:14, content: '高樹都市計畫'},
+	{id:14, value:15, content: '枋寮都市計畫'},
+	{id:15, value:16, content: '林邊都市計畫'},
+	{id:16, value:17, content: '萬巒都市計畫'},
+	{id:17, value:18, content: '新園都市計畫'},
+	{id:18, value:19, content: '南州都市計畫'},
+	{id:19, value:20, content: '新埤都市計畫'},
+	{id:20, value:21, content: '竹田都市計畫'},
+	{id:21, value:22, content: '車城都市計畫'},
+	{id:22, value:23, content: '新園(烏龍地區)都市計畫'},
+	{id:23, value:24, content: '滿州都市計畫'},
+	{id:24, value:25, content: '崁頂都市計畫'},
+	{id:25, value:26, content: '內埔(豐田地區)都市計畫'},
+	{id:26, value:27, content: '枋寮(水底寮)都市計畫'},
+	{id:27, value:28, content: '內埔(龍泉地區)都市計畫'},
+	{id:28, value:29, content: '鹽埔漁港特定區計畫'},
+	{id:29, value:30, content: '琉球風景特定區計畫'},
+	{id:30, value:31, content: '大鵬灣風景特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1913,00,30), group:1, content:'屏東市區計畫', type: 'point'},
+	{start: new Date(1937,00,01), group:1, content:'屏東都市計畫', type: 'point'},
+	{start: new Date(1955,06,15), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1992,04,12), group:1, content:'一通', type: 'point'},
+	{start: new Date(2000,04,16), group:1, content:'二通', type: 'point'},
+	{start: new Date(2011,09,06), group:1, content:'三通', type: 'point'},
+		
+	{start: new Date(1941,06,01), group:2, content:'東港都市計畫', type: 'point'},
+	{start: new Date(1955,06,21), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1674,05,01), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1985,06,15), group:2, content:'擴大暨通檢', type: 'point'},
+	{start: new Date(2003,06,29), group:2, content:'二通', type: 'point'},
+	{start: new Date(2015,00,09), group:2, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1949,07,15), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1985,10,29), group:3, content:'一通', type: 'point'},
+	{start: new Date(2002,02,21), group:3, content:'二通', type: 'point'},
+	{start: new Date(2011,09,16), group:3, content:'三通', type: 'point'},
+	
+	{start: new Date(1953,01,02), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1980,04,16), group:4, content:'擴大', type: 'point'},
+	{start: new Date(2003,07,01), group:4, content:'一通', type: 'point'},
+
+	{start: new Date(1955,06,30), group:5, content:'擬定', type: 'point'},
+	{start: new Date(2002,08,13), group:5, content:'一通', type: 'point'},
+	{start: new Date(2013,02,25), group:5, content:'二通(公展)', type: 'point'},
+
+	{start: new Date(1972,10,07), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1984,04,15), group:6, content:'一通', type: 'point'},
+	{start: new Date(1994,02,11), group:6, content:'二通', type: 'point'},
+	{start: new Date(2014,03,22), group:6, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1972,10,15), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1985,03,19), group:7, content:'一通', type: 'point'},
+	{start: new Date(2001,07,26), group:7, content:'二通', type: 'point'},
+	{start: new Date(2015,08,11), group:7, content:'三通(草案)', type: 'point'},
+	
+	{start: new Date(1973,02,15), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1984,00,10), group:8, content:'一通', type: 'point'},
+	{start: new Date(2003,03,18), group:8, content:'二通', type: 'point'},
+	
+	{start: new Date(1973,02,15), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1989,02,08), group:9, content:'一通', type: 'point'},
+	{start: new Date(1997,01,21), group:9, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,08,07), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1988,03,23), group:10, content:'一通', type: 'point'},
+	{start: new Date(1993,07,17), group:10, content:'二通', type: 'point'},
+	{start: new Date(2005,05,30), group:10, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,06,15), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1988,01,11), group:11, content:'一通', type: 'point'},
+	{start: new Date(2002,11,10), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,09,29), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1987,03,21), group:12, content:'一通', type: 'point'},
+	{start: new Date(2002,02,15), group:12, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,10,16), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1985,09,04), group:13, content:'一通', type: 'point'},
+	{start: new Date(1999,11,02), group:13, content:'二通', type: 'point'},
+	{start: new Date(2015,09,01), group:13, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,00,03), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1986,04,08), group:14, content:'一通', type: 'point'},
+	{start: new Date(2003,06,04), group:14, content:'二通', type: 'point'},
+	{start: new Date(2012,10,19), group:10, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1975,01,05), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1988,01,10), group:15, content:'一通', type: 'point'},
+	{start: new Date(1999,10,29), group:15, content:'二通', type: 'point'},
+	
+	{start: new Date(1975,01,05), group:16, content:'擬定', type: 'point'},
+	{start: new Date(2004,00,16), group:16, content:'一通', type: 'point'},
+	
+	{start: new Date(1975,01,25), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1986,00,23), group:17, content:'一通', type: 'point'},
+	{start: new Date(2002,06,30), group:17, content:'二通', type: 'point'},
+	{start: new Date(2012,04,02), group:17, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1975,05,25), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1982,01,17), group:18, content:'一通', type: 'point'},
+	{start: new Date(1990,11,28), group:18, content:'二通', type: 'point'},
+	{start: new Date(2002,10,26), group:18, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,10,19), group:19, content:'擬定', type: 'point'},
+	{start: new Date(2001,11,04), group:19, content:'一通', type: 'point'},
+	{start: new Date(2012,09,23), group:19, content:'二通(公展)', type: 'point'},
+	
+	{start: new Date(1975,11,17), group:20, content:'擬定', type: 'point'},
+	{start: new Date(1985,03,04), group:20, content:'一通', type: 'point'},
+	{start: new Date(2004,00,16), group:20, content:'二通', type: 'point'},
+	
+	{start: new Date(1976,02,30), group:21, content:'擬定', type: 'point'},
+	{start: new Date(1988,09,17), group:21, content:'一通', type: 'point'},
+	{start: new Date(2002,02,14), group:21, content:'二通', type: 'point'},
+	
+	{start: new Date(1979,06,05), group:22, content:'擬定', type: 'point'},
+	{start: new Date(1988,06,19), group:22, content:'一通', type: 'point'},
+	{start: new Date(2003,02,06), group:22, content:'二通', type: 'point'},
+	{start: new Date(2017,00,24), group:22, content:'三通(內政部都委會通過)', type: 'point'},
+	
+	{start: new Date(1981,03,25), group:23, content:'擬定', type: 'point'},
+	{start: new Date(1990,11,28), group:23, content:'一通', type: 'point'},
+	{start: new Date(1999,03,16), group:23, content:'二通', type: 'point'},
+	
+	{start: new Date(1983,00,22), group:24, content:'擬定', type: 'point'},
+	{start: new Date(1992,05,03), group:24, content:'一通', type: 'point'},
+	{start: new Date(1998,09,31), group:24, content:'二通', type: 'point'},
+	{start: new Date(2012,09,23), group:24, content:'三通(公展)', type: 'point'},
+	
+	{start: new Date(1984,11,17), group:25, content:'擬定', type: 'point'},
+	{start: new Date(1993,03,13), group:25, content:'一通', type: 'point'},
+	{start: new Date(2017,00,23), group:25, content:'二通暨莫拉克重建', type: 'point'},
+		
+	{start: new Date(1985,06,05), group:26, content:'擬定', type: 'point'},
+	{start: new Date(1999,10,29), group:26, content:'一通', type: 'point'},
+	{start: new Date(2012,10,19), group:26, content:'二通(公展)', type: 'point'},
+
+	{start: new Date(1988,00,01), group:27, content:'擬定', type: 'point'},
+	{start: new Date(2008,01,24), group:27, content:'一通', type: 'point'},
+
+	{start: new Date(1988,02,24), group:28, content:'擬定', type: 'point'},
+	{start: new Date(2001,02,12), group:28, content:'一通', type: 'point'},
+	{start: new Date(2015,06,21), group:28, content:'二通', type: 'point'},
+
+	{start: new Date(1990,07,15), group:29, content:'擬定', type: 'point'},
+	{start: new Date(2014,07,12), group:29, content:'一通', type: 'point'},
+	
+	{start: new Date(2001,10,02), group:30, content:'擬定', type: 'point'},
+	{start: new Date(2006,10,08), group:30, content:'一通', type: 'point'},
+	{start: new Date(2014,09,01), group:30, content:'二通(草案)', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_pt');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_el" style="padding-top:50px">
+  <h3>宜蘭縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '宜蘭都市計畫'},
+	{id: 2, value: 3, content: '羅東都市計畫'},
+	{id: 3, value: 4, content: '蘇澳都市計畫'},
+	{id: 4, value: 5, content: '頭城都市計畫'},
+	{id: 5, value: 6, content: '東北角海岸(含大溪海岸及頭城濱海)風景特定區計畫'},
+	{id: 6, value: 7, content: '礁溪都市計畫'},
+	{id: 7, value: 8, content: '三星都市計畫'},
+	{id: 8, value: 9, content: '員山都市計畫'},
+	{id: 9, value:10, content: '五結都市計畫'},
+	{id:10, value:11, content: '冬山都市計畫'},
+	{id:11, value:12, content: '南澳南強都市計畫'},
+	{id:12, value:13, content: '蘇澳(新馬地區)都市計畫'},
+	{id:13, value:14, content: '壯圍都市計畫'},
+	{id:14, value:15, content: '五結(學進地區)都市計畫'},
+	{id:15, value:16, content: '四城都市計畫'},
+	{id:16, value:17, content: '大湖風景特定區計畫'},
+	{id:17, value:18, content: '梅花湖風景特定區計畫'},
+	{id:18, value:19, content: '龍潭湖風景特定區計畫'},
+	{id:19, value:20, content: '五峰旗風景特定區計畫'},
+	{id:20, value:21, content: '冬山(順安地區)都市計畫'},
+	{id:21, value:22, content: '宜蘭縣政中心地區都市計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1932,04,20), group:1, content:'宜蘭街市區計畫', type: 'point'},
+	{start: new Date(1971,04,25), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1983,04,02), group:1, content:'擴大', type: 'point'},
+	{start: new Date(1991,05,10), group:1, content:'擴大暨一通', type: 'point'},
+	{start: new Date(2007,05,20), group:1, content:'二通', type: 'point'},
+
+	{start: new Date(1934,04,10), group:2, content:'羅東街市區計畫', type: 'point'},
+	{start: new Date(1937,10,03), group:2, content:'羅東都市計畫', type: 'point'},
+	{start: new Date(1959,07,03), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1966,09,26), group:2, content:'擴大', type: 'point'},
+	{start: new Date(1980,05,07), group:2, content:'通檢', type: 'point'},
+	{start: new Date(1991,02,22), group:2, content:'二通', type: 'point'},
+	{start: new Date(2003,07,20), group:2, content:'三通', type: 'point'},
+	
+	{start: new Date(1942,07,10), group:3, content:'蘇澳都市計畫', type: 'point'},
+	{start: new Date(1965,04,31), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1971,11,07), group:3, content:'擴大暨通撿', type: 'point'},
+	{start: new Date(1979,09,08), group:3, content:'二通', type: 'point'},
+	{start: new Date(2004,05,18), group:3, content:'三通', type: 'point'},
+	
+	{start: new Date(1971,06,01), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1982,04,17), group:4, content:'一通', type: 'point'},
+	{start: new Date(1991,02,20), group:4, content:'二通', type: 'point'},
+	{start: new Date(2012,07,03), group:4, content:'三通', type: 'point'},
+	
+	{start: new Date(1972,01,28), group:5, content:'大溪特定區', type: 'point'},
+	{start: new Date(1982,02,13), group:5, content:'東北角海岸風景特定區計畫', type: 'point'},
+	{start: new Date(1986,01,01), group:5, content:'頭城濱海風景特定區', type: 'point'},
+	{start: new Date(1991,07,02), group:5, content:'東北角海岸(含大溪海岸及頭城濱海)風景特定區計畫(一通)', type: 'point'},
+	{start: new Date(1998,00,05), group:5, content:'二通(大溪海岸地區)', type: 'point'},
+	{start: new Date(2000,08,27), group:5, content:'二通(含大溪海岸及頭城濱海)', type: 'point'},
+	{start: new Date(2017,04,05), group:5, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1972,07,22), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1983,06,12), group:6, content:'通檢', type: 'point'},	
+	{start: new Date(1991,02,20), group:6, content:'一通', type: 'point'},
+	{start: new Date(1999,04,26), group:6, content:'二通', type: 'point'},
+	
+	{start: new Date(1973,02,01), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1990,11,01), group:7, content:'一通', type: 'point'},
+	{start: new Date(1998,02,18), group:7, content:'二通', type: 'point'},
+	
+	{start: new Date(1973,02,10), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1991,00,28), group:8, content:'一通', type: 'point'},
+	{start: new Date(2012,00,31), group:8, content:'二通(一階)', type: 'point'},
+	{start: new Date(2015,11,31), group:8, content:'二通(二階)', type: 'point'},	
+
+	{start: new Date(1973,08,05), group:9, content:'擬定', type: 'point'},
+	{start: new Date(1991,00,07), group:9, content:'一通', type: 'point'},
+	{start: new Date(1912,00,18), group:9, content:'二通', type: 'point'},
+	
+	{start: new Date(1974,00,14), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1984,10,14), group:10, content:'一通', type: 'point'},
+	{start: new Date(1992,05,10), group:10, content:'二通', type: 'point'},
+	{start: new Date(2007,09,24), group:10, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,04,18), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1987,09,23), group:11, content:'一通', type: 'point'},
+	{start: new Date(1997,08,08), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1975,10,10), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1993,06,13), group:12, content:'一通', type: 'point'},
+	{start: new Date(2001,09,04), group:12, content:'二通(新城溪以南、三號以北細部計畫地區)', type: 'point'},
+	
+	{start: new Date(1976,06,14), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1986,02,17), group:13, content:'一通', type: 'point'},
+	{start: new Date(1997,03,17), group:13, content:'二通', type: 'point'},
+	
+	{start: new Date(1981,02,31), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1992,02,21), group:14, content:'一通', type: 'point'},
+	
+	{start: new Date(1982,09,13), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1991,08,16), group:15, content:'一通', type: 'point'},
+	{start: new Date(2012,06,26), group:15, content:'二通', type: 'point'},
+	
+	{start: new Date(1983,09,22), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1993,01,02), group:16, content:'一通', type: 'point'},
+	
+	{start: new Date(1984,05,06), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1992,09,14), group:17, content:'一通', type: 'point'},
+	{start: new Date(2002,08,27), group:17, content:'二通', type: 'point'},
+	{start: new Date(2013,11,06), group:17, content:'三通', type: 'point'},
+	
+	{start: new Date(1986,04,01), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1994,07,16), group:18, content:'一通', type: 'point'},
+	{start: new Date(2001,02,20), group:18, content:'二通', type: 'point'},
+	
+	{start: new Date(1986,09,23), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1994,07,16), group:19, content:'一通', type: 'point'},
+	{start: new Date(2001,06,25), group:19, content:'二通', type: 'point'},
+	
+	{start: new Date(1992,01,10), group:20, content:'擬定', type: 'point'},
+	{start: new Date(2000,11,15), group:20, content:'一通', type: 'point'},
+	
+	{start: new Date(1996,01,27), group:21, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_el');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+  
+<div class="container-fluid" id="visualization_hl" style="padding-top:50px">
+  <h3>花蓮縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '花蓮都市計畫'},
+	{id: 2, value: 3, content: '壽豐都市計畫'},
+	{id: 3, value: 4, content: '鳳林都市計畫'},
+	{id: 4, value: 5, content: '玉里都市計畫'},
+	{id: 5, value: 6, content: '天祥風景特定區計畫'},
+	{id: 6, value: 7, content: '瑞穗都市計畫'},
+	{id: 7, value: 8, content: '光復都市計畫'},
+	{id: 8, value: 9, content: '吉安都市計畫'},
+	{id: 9, value:10, content: '新城(北埔地區)都市計畫'},
+	{id:10, value:11, content: '富里都市計畫'},
+	{id:11, value:12, content: '豐濱都市計畫'},
+	{id:12, value:13, content: '鯉魚潭風景區計畫'},
+	{id:13, value:14, content: '新秀(新城-秀林地區)都市計畫'},
+	{id:14, value:15, content: '磯崎風景特定區計畫'},
+	{id:15, value:16, content: '石梯秀姑巒風景特定區計畫'},
+	{id:16, value:17, content: '吉安(鄉公所附近)都市計畫'},
+	{id:17, value:18, content: '秀林(和平地區)都市計畫'},
+	{id:18, value:19, content: '秀林(崇德地區)都市計畫'},
+	{id:19, value:20, content: '東華大學城特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1910,01,19), group:1, content:'花蓮港街市區計畫', type: 'point'},
+	{start: new Date(1915,05,01), group:1, content:'擴張', type: 'point'},
+	{start: new Date(1934,01,14), group:1, content:'花蓮港市區計畫', type: 'point'},
+	{start: new Date(1938,10,26), group:1, content:'花蓮港都市計畫', type: 'point'},
+	{start: new Date(1967,03,24), group:1, content:'修訂花蓮都市計畫(美崙新市區部分)', type: 'point'},
+	{start: new Date(1975,03,07), group:1, content:'花蓮市西部地區都市計畫', type: 'point'},
+	{start: new Date(1982,07,02), group:1, content:'花蓮市舊市區主要計畫', type: 'point'},
+	{start: new Date(1988,03,12), group:1, content:'花蓮(美崙新市區、西部地區、舊市區、國慶地區)都市計畫(一通)', type: 'point'},
+	{start: new Date(2002,00,09), group:1, content:'花蓮都市計畫', type: 'point'},
+	
+	{start: new Date(1912,03,19), group:2, content:'鯉魚尾市區計畫', type: 'point'},
+	{start: new Date(1973,10,08), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1982,01,04), group:2, content:'一通', type: 'point'},
+	{start: new Date(1988,07,30), group:2, content:'二通', type: 'point'},
+	{start: new Date(1997,01,05), group:2, content:'三通', type: 'point'},
+	{start: new Date(2008,06,07), group:2, content:'四通', type: 'point'},
+
+	{start: new Date(1915,06,07), group:3, content:'鳳林市區計畫', type: 'point'},
+	{start: new Date(1941,02,12), group:3, content:'鳳林都市計畫', type: 'point'},
+	{start: new Date(1955,07,19), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1979,10,21), group:3, content:'擴大修訂', type: 'point'},
+	{start: new Date(1991,11,05), group:3, content:'一通', type: 'point'},
+	{start: new Date(2001,00,18), group:3, content:'二通', type: 'point'},
+	{start: new Date(2016,08,02), group:3, content:'三通', type: 'point'},
+
+	{start: new Date(1921,07,25), group:4, content:'玉里市區計畫', type: 'point'},
+	{start: new Date(1941,02,12), group:4, content:'玉里都市計畫', type: 'point'},
+	{start: new Date(1955,06,13), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1973,10,09), group:4, content:'擴大', type: 'point'},
+	{start: new Date(1988,06,08), group:4, content:'一通', type: 'point'},
+	{start: new Date(2002,00,04), group:4, content:'二通', type: 'point'},
+
+	{start: new Date(1966,04,27), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1991,00,19), group:5, content:'一通', type: 'point'},
+	
+	{start: new Date(1973,10,09), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1985,07,22), group:6, content:'一通', type: 'point'},
+	{start: new Date(1994,06,22), group:6, content:'二通', type: 'point'},
+	{start: new Date(2012,11,17), group:6, content:'三通(一階)', type: 'point'},
+	{start: new Date(2014,09,20), group:6, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1974,11,04), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1991,03,13), group:7, content:'一通', type: 'point'},
+	{start: new Date(1998,08,11), group:7, content:'二通', type: 'point'},
+	{start: new Date(2017,00,06), group:7, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1975,00,04), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1980,07,09), group:8, content:'一通', type: 'point'},
+	{start: new Date(1987,08,09), group:8, content:'二通', type: 'point'},
+	{start: new Date(1997,11,17), group:8, content:'三通', type: 'point'},
+	{start: new Date(2009,10,02), group:8, content:'四通(一階)', type: 'point'},
+	
+	{start: new Date(1975,00,24), group:9, content:'新城都市計畫', type: 'point'},
+	{start: new Date(1982,07,14), group:9, content:'一通', type: 'point'},
+	{start: new Date(1987,11,02), group:9, content:'二通', type: 'point'},
+	{start: new Date(1995,00,17), group:9, content:'三通', type: 'point'},
+	{start: new Date(2012,08,17), group:9, content:'四通(一階)', type: 'point'},
+	{start: new Date(2013,04,17), group:9, content:'四通(二階)', type: 'point'},
+	
+	{start: new Date(1975,00,29), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1982,07,12), group:10, content:'一通', type: 'point'},
+	{start: new Date(1994,11,06), group:10, content:'二通', type: 'point'},
+	{start: new Date(2016,00,12), group:10, content:'三通', type: 'point'},
+	
+	{start: new Date(1975,10,13), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1994,09,12), group:11, content:'一通', type: 'point'},
+	{start: new Date(2003,03,08), group:11, content:'二通', type: 'point'},
+	
+	{start: new Date(1976,05,07), group:12, content:'擬定', type: 'point'},
+	{start: new Date(2003,02,11), group:12, content:'一通', type: 'point'},
+	{start: new Date(2015,11,19), group:12, content:'二通', type: 'point'},
+		
+	{start: new Date(1979,10,01), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1988,11,02), group:13, content:'一通', type: 'point'},
+	{start: new Date(1996,01,12), group:13, content:'二通', type: 'point'},
+	{start: new Date(2016,10,08), group:13, content:'三通', type: 'point'},
+	
+	{start: new Date(1980,04,09), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1988,00,01), group:14, content:'一通', type: 'point'},
+	{start: new Date(1997,10,01), group:14, content:'二通', type: 'point'},
+		
+	{start: new Date(1981,00,26), group:15, content:'擬定', type: 'point'},
+	{start: new Date(2001,07,01), group:15, content:'一通', type: 'point'},
+	{start: new Date(2015,10,04), group:15, content:'二通', type: 'point'},
+	
+	{start: new Date(1981,11,14), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1989,08,30), group:16, content:'一通', type: 'point'},
+	{start: new Date(1997,11,10), group:16, content:'二通', type: 'point'},
+	{start: new Date(2009,10,02), group:16, content:'三通(一階)', type: 'point'},
+	
+	{start: new Date(1982,03,15), group:17, content:'擬定', type: 'point'},
+	{start: new Date(1989,04,24), group:17, content:'一通', type: 'point'},
+	{start: new Date(1997,03,30), group:17, content:'二通', type: 'point'},
+	{start: new Date(2014,01,24), group:17, content:'三通', type: 'point'},
+		
+	{start: new Date(1982,03,15), group:18, content:'擬定', type: 'point'},
+	{start: new Date(1988,06,23), group:18, content:'一通', type: 'point'},
+	{start: new Date(1997,04,19), group:18, content:'二通', type: 'point'},
+	{start: new Date(2016,11,02), group:18, content:'三通', type: 'point'},
+		
+	{start: new Date(2001,04,21), group:19, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_hl');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_td" style="padding-top:50px">
+  <h3>台東縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '台東市都市計畫'},
+	{id: 2, value: 3, content: '成功都市計畫'},
+	{id: 3, value: 4, content: '關山都市計畫'},
+	{id: 4, value: 5, content: '東河都市計畫'},
+	{id: 5, value: 6, content: '大武都市計畫'},
+	{id: 6, value: 7, content: '鹿野都市計畫'},
+	{id: 7, value: 8, content: '太麻里都市計畫'},
+	{id: 8, value: 9, content: '池上都市計畫'},
+	{id: 9, value:10, content: '知本溫泉風景特定區計畫', nestedGroups:[10,11]},
+	{id:10, value:11, content: '知本溫泉風景特定區計畫-外溫泉部分'},
+	{id:11, value:12, content: '知本溫泉風景特定區計畫-內溫泉部分'},
+	{id:12, value:13, content: '長濱都市計畫'},
+	{id:13, value:14, content: '小野柳風景特定區計畫'},
+	{id:14, value:15, content: '三仙台風景特定區計畫'},
+	{id:15, value:16, content: '台東市知本鐵路車站附近地區都市計畫'},
+	{id:16, value:17, content: '台東鐵路新站附近地區主要計畫'},
+	{id:17, value:18, content: '綠島風景特定區計畫'},
+	{id:18, value:19, content: '紅葉溫泉風景特定區計畫'},
+	{id:19, value:20, content: '八仙洞風景特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	
+	{start: new Date(1913,07,01), group:1, content:'卑南街市區計畫', type: 'point'},
+	{start: new Date(1938,10,26), group:1, content:'台東都市計畫', type: 'point'},
+	{start: new Date(1963,01,05), group:1, content:'核定', type: 'point'},
+	{start: new Date(1976,11,01), group:1, content:'擴大及修訂', type: 'point'},
+	{start: new Date(1984,05,11), group:1, content:'一通', type: 'point'},
+	{start: new Date(1994,07,08), group:1, content:'二通', type: 'point'},
+	{start: new Date(2005,08,01), group:1, content:'三通(一階)', type: 'point'},
+	{start: new Date(2009,09,21), group:1, content:'三通(二階)', type: 'point'},
+		
+	{start: new Date(1922,03,25), group:2, content:'新港市區計畫', type: 'point'},
+	{start: new Date(1979,06,24), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1984,08,12), group:2, content:'一通', type: 'point'},
+	{start: new Date(1994,05,30), group:2, content:'二通', type: 'point'},
+	{start: new Date(2008,11,02), group:2, content:'三通', type: 'point'},
+	
+	{start: new Date(1967,01,08), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1981,02,25), group:3, content:'擴大', type: 'point'},
+	{start: new Date(2011,01,24), group:3, content:'一通', type: 'point'},
+
+	{start: new Date(1971,02,22), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1982,00,29), group:4, content:'一通', type: 'point'},
+	{start: new Date(1991,08,10), group:4, content:'二通', type: 'point'},
+	{start: new Date(2002,08,25), group:4, content:'三通', type: 'point'},
+	
+	{start: new Date(1973,02,27), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1983,02,07), group:5, content:'一通', type: 'point'},
+	{start: new Date(1990,03,30), group:5, content:'二通', type: 'point'},
+	{start: new Date(2003,03,22), group:5, content:'三通', type: 'point'},
+	
+	{start: new Date(1974,02,22), group:6, content:'擬定', type: 'point'},
+	{start: new Date(1983,00,15), group:6, content:'一通', type: 'point'},
+	{start: new Date(1989,02,24), group:6, content:'二通', type: 'point'},
+	{start: new Date(1992,11,30), group:6, content:'三通', type: 'point'},
+		
+	{start: new Date(1974,02,22), group:7, content:'擬定', type: 'point'},
+	{start: new Date(1987,00,15), group:7, content:'一通', type: 'point'},
+	{start: new Date(1993,00,14), group:7, content:'二通', type: 'point'},
+		
+	{start: new Date(1974,07,06), group:8, content:'擬定', type: 'point'},
+	{start: new Date(1983,05,22), group:8, content:'一通', type: 'point'},
+	{start: new Date(1990,04,15), group:8, content:'二通', type: 'point'},
+		
+	{start: new Date(2010,09,06), group:9, content:'合併三通(一階)', type: 'point'},
+	{start: new Date(2014,08,25), group:9, content:'三通(二階)', type: 'point'},
+	
+	{start: new Date(1976,07,05), group:10, content:'擬定', type: 'point'},
+	{start: new Date(1982,09,26), group:10, content:'一通', type: 'point'},
+	{start: new Date(1994,10,17), group:10, content:'二通', type: 'point'},
+		
+	{start: new Date(1986,01,30), group:11, content:'擬定', type: 'point'},
+	{start: new Date(1994,11,02), group:11, content:'一通', type: 'point'},
+		
+	{start: new Date(1981,11,05), group:12, content:'擬定', type: 'point'},
+	{start: new Date(1987,00,15), group:12, content:'一通', type: 'point'},
+	{start: new Date(1992,10,05), group:12, content:'二通', type: 'point'},
+	{start: new Date(2001,07,01), group:12, content:'三通', type: 'point'},
+	
+	{start: new Date(1985,04,15), group:15, content:'擬定', type: 'point'},
+	{start: new Date(1993,08,18), group:15, content:'一通', type: 'point'},
+	{start: new Date(2009,10,12), group:15, content:'二通(一階)', type: 'point'},
+	{start: new Date(2017,05,07), group:15, content:'二通(二階)', type: 'point'},
+	
+	{start: new Date(1984,00,31), group:13, content:'擬定', type: 'point'},
+	{start: new Date(1993,00,31), group:13, content:'一通', type: 'point'},
+	{start: new Date(2004,06,09), group:13, content:'二通', type: 'point'},
+		
+	{start: new Date(1984,08,19), group:14, content:'擬定', type: 'point'},
+	{start: new Date(1995,06,17), group:14, content:'一通', type: 'point'},
+	{start: new Date(2006,11,12), group:14, content:'二通', type: 'point'},
+	
+	{start: new Date(1986,01,25), group:16, content:'擬定', type: 'point'},
+	{start: new Date(1993,03,27), group:16, content:'一通', type: 'point'},
+	{start: new Date(2004,10,25), group:16, content:'二通', type: 'point'},
+		
+	{start: new Date(1986,01,25), group:17, content:'擬定', type: 'point'},
+	{start: new Date(2001,04,25), group:17, content:'一通', type: 'point'},
+	{start: new Date(2013,07,30), group:17, content:'二通(一階)', type: 'point'},
+			
+	{start: new Date(1987,01,17), group:18, content:'擬定', type: 'point'},
+	{start: new Date(2003,11,25), group:18, content:'一通', type: 'point'},
+
+	{start: new Date(1988,02,21), group:19, content:'擬定', type: 'point'},
+	{start: new Date(1996,10,07), group:19, content:'一通', type: 'point'},
+	{start: new Date(2004,02,05), group:19, content:'二通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_td');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>
+
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_ph" style="padding-top:50px">
+  <h3>澎湖縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '馬公都市計畫'},
+	{id: 2, value: 3, content: '白沙鄉通梁地區都市計畫'},
+	{id: 3, value: 4, content: '鎖港地區都市計畫'},
+	{id: 4, value: 5, content: '西嶼西台古蹟特定區計畫'},
+	{id: 5, value: 6, content: '林投風景特定區計畫'},
+	{id: 6, value: 7, content: '二崁傳統聚落特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1936,07,27), group:0, content:'都市計畫令'},
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+
+	{start: new Date(1982,04,13), group:0, content:'台灣北、中、南、東部區域計畫', className:'mid'},
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+
+	{start: new Date(1912,09,04), group:1, content:'媽宮街市區計畫', type: 'point'},
+	{start: new Date(1940,10,29), group:1, content:'馬公都市計畫', type: 'point'},
+	{start: new Date(1955,09,01), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1973,11,01), group:1, content:'擴大', type: 'point'},
+	{start: new Date(1987,11,15), group:1, content:'一通', type: 'point'},
+	{start: new Date(2003,08,12), group:1, content:'二通', type: 'point'},
+	{start: new Date(2015,11,14), group:1, content:'三通', type: 'point'},
+		
+	{start: new Date(1973,02,06), group:2, content:'白沙鄉通梁鄉街計畫', type: 'point'},
+	{start: new Date(1984,04,16), group:2, content:'白沙鄉通梁地區都市計畫(一通)', type: 'point'},
+	{start: new Date(1989,11,18), group:2, content:'二通(草案)', type: 'point'},
+	{start: new Date(1999,05,16), group:2, content:'三通', type: 'point'},
+	{start: new Date(2009,07,05), group:2, content:'擴大暨四通', type: 'point'},
+	{start: new Date(2017,04,25), group:2, content:'五通(草案)', type: 'point'},
+	
+	{start: new Date(1976,04,29), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1988,06,16), group:3, content:'一通', type: 'point'},
+	{start: new Date(1996,09,01), group:3, content:'二通', type: 'point'},
+	{start: new Date(2008,01,13), group:3, content:'三通', type: 'point'},
+	{start: new Date(2016,10,16), group:3, content:'四通(草案)', type: 'point'},
+	
+	{start: new Date(1985,00,15), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1992,11,21), group:4, content:'一通', type: 'point'},
+	{start: new Date(1999,08,10), group:4, content:'二通', type: 'point'},
+	{start: new Date(2008,03,30), group:4, content:'三通', type: 'point'},
+	{start: new Date(2016,03,05), group:4, content:'四通(草案)', type: 'point'},
+	
+	{start: new Date(1987,07,08), group:5, content:'擬定', type: 'point'},
+	{start: new Date(1994,09,12), group:5, content:'一通', type: 'point'},
+	{start: new Date(2008,08,27), group:5, content:'二通', type: 'point'},
+	{start: new Date(2014,11,19), group:5, content:'三通(草案)', type: 'point'},
+	
+	{start: new Date(2001,11,17), group:6, content:'擬定', type: 'point'},
+	{start: new Date(2010,04,05), group:6, content:'一通', type: 'point'},
+	{start: new Date(2016,09,17), group:6, content:'二通(草案)', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_ph');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1935, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+</div>
+<br/><br/>
+
+
+<div class="container-fluid" id="visualization_jm" style="padding-top:50px">
+  <h3>金門縣</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '金門特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1956,05,23), group:0, content:'金馬地區戰地政務實驗辦法', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(1992,10,17), group:0, content:'金馬地區解除戰地政務', className:'event'},
+	{start: new Date(2000,03,05), group:0, content:'離島建設條例'},
+	
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+	
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	
+	{start: new Date(1996,00,20), group:1, content:'擬定', type: 'point'},
+	{start: new Date(2006,10,01), group:1, content:'一通', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_jm');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1983, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+</div>
+<br/><br/>
+
+<div class="container-fluid" id="visualization_mj" style="padding-top:50px">
+  <h3>連江縣(馬祖)</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '南竿地區風景特定區計畫'},
+	{id: 2, value: 3, content: '北竿地區風景特定區計畫'},
+	{id: 3, value: 4, content: '東引地區風景特定區計畫'},
+	{id: 4, value: 5, content: '莒光風景特定區'},
+	{id: 5, value: 6, content: '無人島礁風景特定區計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1956,05,23), group:0, content:'金門馬祖地區戰地政務實驗辦法', className:'event'},
+	{start: new Date(1964,08,01), group:0, content:'都市計畫法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(1992,10,17), group:0, content:'馬祖地區解除戰地政務', className:'event'},
+	{start: new Date(2000,03,05), group:0, content:'離島建設條例'},
+	{start: new Date(1999,02,15), group:0, content:'核定馬祖為國家級風景特定區', className:'event'},
+	
+	{start: new Date(1995,00,01), group:0, content:'台灣北、中、南、東部區域計畫(一通)', className:'mid'},
+	{start: new Date(2013,09,17), group:0, content:'全國區域計畫', className:'mid'},
+	
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	
+	{start: new Date(1990,11,01), group:1, content:'擬定主要計畫', type: 'point'},
+	{start: new Date(1996,03,15), group:1, content:'擴大風景特定區主要計畫', type: 'point'},
+	{start: new Date(2001,03,12), group:1, content:'一通', type: 'point'},
+	{start: new Date(2011,01,23), group:1, content:'二通(一階)', type: 'point'},
+	{start: new Date(2012,00,01), group:1, content:'二通(二階)', type: 'point'},
+	{start: new Date(2012,07,22), group:1, content:'二通(三階)', type: 'point'},
+	
+	{start: new Date(1996,03,15), group:2, content:'擬定', type: 'point'},
+	{start: new Date(2001,02,15), group:2, content:'一通', type: 'point'},
+	{start: new Date(2011,11,21), group:2, content:'二通', type: 'point'},
+
+	{start: new Date(2001,03,11), group:3, content:'擬定', type: 'point'},
+	{start: new Date(2013,11,12), group:3, content:'一通', type: 'point'},
+		
+	{start: new Date(2001,03,11), group:4, content:'擬定', type: 'point'},
+	{start: new Date(2011,02,11), group:4, content:'一通(公展)', type: 'point'},
+	
+	{start: new Date(2002,11,31), group:5, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('visualization_mj');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+    orientation: 'both',
+    editable: false,
+    groupEditable: true,
+	clickToUse: true,	
+    start: new Date(1983, 0, 1),
+    end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+</script>
+</div>
+<br><br>
+
+<div class="container-fluid" id="pk" style="padding-top:50px">
+  <h3>國家公園</h3>
+<script>
+  var groups = new vis.DataSet([
+	{id: 0, value: 1, content: '相關法令、背景', style: "font-weight: bold; background-color: #e0e0e0;"},
+	{id: 1, value: 2, content: '墾丁國家公園計畫'},
+	{id: 2, value: 3, content: '玉山國家公園計畫'},
+	{id: 3, value: 4, content: '陽明山國家公園計畫'},
+	{id: 4, value: 5, content: '太魯閣國家公園計畫'},
+	{id: 5, value: 6, content: '雪霸國家公園計畫'},
+	{id: 6, value: 7, content: '金門國家公園計畫'},
+	{id: 7, value: 8, content: '東沙環礁國家公園計畫'},
+	{id: 8, value: 9, content: '台江國家公園計畫'},
+	{id: 9, value: 10, content: '澎湖南方四島國家公園計畫'},
+	{id: 10, value: 11, content: '壽山國家自然公園計畫'},
+  ]);
+
+  var items = new vis.DataSet([
+	{start: new Date(1945,09,25), group:0, content:'戰後', className:'event'},
+	{start: new Date(1972,05,13), group:0, content:'國家公園法'},
+	{start: new Date(1974,00,31), group:0, content:'區域計畫法'},
+	{start: new Date(1979,03,01), group:0, content:'台灣地區綜合開發計畫', className:'up'},
+	{start: new Date(1996,11,01), group:0, content:'國土綜合開發計畫', className:'up'},
+	{start: new Date(2010,01,22), group:0, content:'國土空間發展策略計畫', className:'up'},
+	{start: new Date(2016,04,01), group:0, content:'國土計畫法'},
+	
+	{start: new Date(1982,08,01), group:1, content:'擬定', type: 'point'},
+	{start: new Date(1996,03,01), group:1, content:'一通', type: 'point'},
+	{start: new Date(2004,06,29), group:1, content:'二通', type: 'point'},
+	{start: new Date(2011,10,25), group:1, content:'三通', type: 'point'},
+	
+	{start: new Date(1937,11,01), group:2, content:'新高阿里山國立公園', type: 'point'},
+	{start: new Date(1985,01,07), group:2, content:'擬定', type: 'point'},
+	{start: new Date(1994,07,26), group:2, content:'一通', type: 'point'},
+	{start: new Date(2004,10,01), group:2, content:'二通', type: 'point'},
+	{start: new Date(2012,10,20), group:2, content:'三通', type: 'point'},
+	
+	{start: new Date(1937,11,01), group:3, content:'大屯國立公園', type: 'point'},
+	{start: new Date(1985,08,16), group:3, content:'擬定', type: 'point'},
+	{start: new Date(1995,00,01), group:3, content:'一通', type: 'point'},
+	{start: new Date(2005,07,15), group:3, content:'二通', type: 'point'},
+	{start: new Date(2013,06,15), group:3, content:'三通', type: 'point'},
+	
+	{start: new Date(1937,11,01), group:4, content:'次高太魯閣國立公園', type: 'point'},
+	{start: new Date(1986,10,12), group:4, content:'擬定', type: 'point'},
+	{start: new Date(1995,05,01), group:4, content:'一通', type: 'point'},
+	{start: new Date(2003,08,01), group:4, content:'二通', type: 'point'},
+	{start: new Date(2015,00,01), group:4, content:'三通', type: 'point'},
+	
+	{start: new Date(1937,11,01), group:5, content:'次高太魯閣國立公園', type: 'point'},	
+	{start: new Date(1991,02,01), group:5, content:'擬定', type: 'point'},
+	{start: new Date(2003,08,04), group:5, content:'一通', type: 'point'},
+	{start: new Date(2013,05,06), group:5, content:'二通', type: 'point'},
+	
+	{start: new Date(1995,09,18), group:6, content:'擬定', type: 'point'},
+	{start: new Date(2003,09,18), group:6, content:'一通', type: 'point'},
+	{start: new Date(2013,09,18), group:6, content:'二通', type: 'point'},
+	
+	{start: new Date(2007,00,17), group:7, content:'擬定', type: 'point'},
+	{start: new Date(2014,01,25), group:7, content:'一通', type: 'point'},	
+	
+	{start: new Date(2009,09,15), group:8, content:'擬定', type: 'point'},
+	{start: new Date(2016,09,20), group:8, content:'一通(草案)', type: 'point'},	
+	
+	{start: new Date(2014,05,08), group:9, content:'擬定', type: 'point'},
+		
+	{start: new Date(2011,10,01), group:10, content:'擬定', type: 'point'},
+  ]);
+
+  var container = document.getElementById('pk');
+  var options = {
+	groupOrder: 'id',
+	stack: false,
+	orientation: 'both',
+	editable: false,
+	groupEditable: true,
+	clickToUse: true,	
+	start: new Date(1935, 0, 1),
+	end: new Date(2017, 11, 31)
+  };
+
+  var timeline = new vis.Timeline(container, items, groups, options);
+
+</script>  
+</div>
+<br><br><br><br><br><br>
+
+</body>
+
+<footer class="text-center">
+  <p>2017/08</p>
+  <p>資料來源：各縣市政府都市計畫書圖查詢系統</p>
+</footer>
+
+</html>
